@@ -6,15 +6,22 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rigidbody;
     private float speed = 500;
+    private float rateOfFire = 0.3f;
+    private bool onCooldown = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
+    {
+        MovePlayer();
+        if (Input.GetMouseButton(0) && !onCooldown)
+            StartCoroutine(Shoot());
+    }
+
+    private void MovePlayer()
     {
         rigidbody.velocity = Vector3.zero;
 
@@ -36,5 +43,13 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.LookAt(transform.position + rigidbody.velocity);
+    }
+
+    private IEnumerator Shoot()
+    {
+        onCooldown = true;
+        ObjectPooler.Instance.SpawnPooledObject(ObjectPooler.PooledObjectType.Bullet, 0, transform.position, transform.rotation.eulerAngles);
+        yield return new WaitForSeconds(rateOfFire);
+        onCooldown = false;
     }
 }
