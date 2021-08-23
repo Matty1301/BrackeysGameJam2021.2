@@ -11,7 +11,7 @@ public class RoomSpawner : MonoBehaviour
 
     public float waitTime = 4f;
 
-    private void Start()
+    private void Awake()
     {
         Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
@@ -60,7 +60,7 @@ public class RoomSpawner : MonoBehaviour
     {
         if(other.CompareTag("RoomSpawnPoint"))
         {
-            if(other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+            if(other.GetComponent<RoomSpawner>() && other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
                 Destroy(gameObject);
