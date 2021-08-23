@@ -561,6 +561,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ennemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7250946006057571320, guid: 62ad9ddb9ea04de46a9602555beb5840, type: 3}
+      propertyPath: m_Speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250946006057571320, guid: 62ad9ddb9ea04de46a9602555beb5840, type: 3}
+      propertyPath: m_Acceleration
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62ad9ddb9ea04de46a9602555beb5840, type: 3}
 --- !u!4 &1917822058 stripped
