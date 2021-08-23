@@ -24,6 +24,7 @@ public class RoomTemplates : MonoBehaviour
             {
                 if(i == rooms.Count - 1)
                 {
+                    FindObjectOfType<NavMeshBuilder>().BuildNavMesh();
                     Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
                     spawnedBoss = true;
                 }

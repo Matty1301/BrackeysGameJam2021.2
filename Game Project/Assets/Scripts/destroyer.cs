@@ -8,7 +8,7 @@ public class destroyer : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		Destroy(other.gameObject);
-
+        if (other.CompareTag("RoomSpawnPoint"))
+		    Destroy(other.gameObject);
 	}
 }

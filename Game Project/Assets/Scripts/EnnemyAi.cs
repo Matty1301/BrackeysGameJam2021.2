@@ -48,8 +48,10 @@ public class EnnemyAi : MonoBehaviour
         float RandomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + RandomX, transform.position.y, transform.position.z + RandomZ);
-    
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+
+        //If there are no obstructions between the enemy and the new walk point, then set walk point to true
+        if (NavMesh.Raycast(transform.position, walkPoint, out NavMeshHit hit, NavMesh.AllAreas) == false)
+        //if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
         }
