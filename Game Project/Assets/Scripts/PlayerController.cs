@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
     private float speed = 500;
     private Vector3 mousePosWorld;
-    private float rateOfFire = 0.3f;
-    private bool onCooldown = false;
+    public Transform shootPoint;
+    public float timeBetweenAttacks;
+    private bool alreadyAttacked;
+    public float health = 100f;
 
     private void Start()
     {
@@ -21,8 +23,8 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         RotatePlayer();
-        if (Input.GetMouseButton(0) && !onCooldown)
-            StartCoroutine(Shoot());
+        if (Input.GetMouseButton(0) && !alreadyAttacked)
+            Attack();
     }
 
     private void MovePlayer()
@@ -45,8 +47,6 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.velocity += new Vector3(speed * Time.fixedDeltaTime, 0, 0);
         }
-
-        //transform.LookAt(transform.position + rigidbody.velocity);
     }
 
     private void RotatePlayer()
@@ -59,11 +59,44 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(new Vector3(mousePosWorld.x, transform.position.y, mousePosWorld.z));
     }
 
+    /*
     private IEnumerator Shoot()
     {
-        onCooldown = true;
-        ObjectPooler.Instance.SpawnPooledObject(ObjectPooler.PooledObjectType.Bullet, 0, transform.position, transform.rotation.eulerAngles);
+        alreadyAttacked = true;
+        ObjectPooler.Instance.SpawnPooledObject(ObjectPooler.PooledObjectType.Bullet, 0, shootPoint.position, transform.rotation.eulerAngles);
         yield return new WaitForSeconds(rateOfFire);
-        onCooldown = false;
+        alreadyAttacked = false;
+    }
+    */
+
+    private void Attack()
+    {
+        ObjectPooler.Instance.SpawnPooledObject(ObjectPooler.PooledObjectType.Bullet, 0, shootPoint.position, transform.rotation.eulerAngles);
+
+        alreadyAttacked = true;
+        Invoke(nameof(ResetAttack), timeBetweenAttacks);
+    }
+
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+    private void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Debug.Log("Game over");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            TakeDamage(10);
+        }
     }
 }

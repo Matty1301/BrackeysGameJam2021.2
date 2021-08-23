@@ -31,4 +31,9 @@ public class Bullet : MonoBehaviour, PooledObjectController
         yield return new WaitForSeconds(5);
         gameObject.SetActive(false);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        gameObject.SetActive(false);
+    }
 }
