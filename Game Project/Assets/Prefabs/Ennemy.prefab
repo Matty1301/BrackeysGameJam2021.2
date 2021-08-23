@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7004126300829377984}
   - component: {fileID: 7004126300829377999}
   - component: {fileID: 7004126300829377998}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7004126300939365539}
   - component: {fileID: 7563449724021909333}
   - component: {fileID: 7250946006057571320}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Ennemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,19 +228,19 @@ MonoBehaviour:
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0
-  sightRange: 0
-  attackRange: 0
+  walkPointRange: 10
+  timeBetweenAttacks: 0.5
+  sightRange: 10
+  attackRange: 5
   playerIsInSightRange: 0
   playerIsInAttackRange: 0
-  Bullet: {fileID: 0}
-  ShootPoint: {fileID: 0}
+  Bullet: {fileID: 6455148223271588842, guid: 3e7985b4be5f0ea4d94cc9d88c15534d, type: 3}
+  ShootPoint: {fileID: 7004126300829377997}
   health: 100
 --- !u!195 &7250946006057571320
 NavMeshAgent:
@@ -274,13 +274,13 @@ GameObject:
   m_Component:
   - component: {fileID: 403227640858900642}
   - component: {fileID: 9096681552604015670}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: NavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &403227640858900642
 Transform:
   m_ObjectHideFlags: 0

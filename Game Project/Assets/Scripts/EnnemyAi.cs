@@ -82,7 +82,8 @@ public class EnnemyAi : MonoBehaviour
         if (!alreadyAttacked)
         {
             // attack
-            Instantiate(Bullet, ShootPoint.position, Quaternion.identity);
+            //Instantiate(Bullet, ShootPoint.position, Quaternion.identity);
+            ObjectPooler.Instance.SpawnPooledObject(ObjectPooler.PooledObjectType.Bullet, 0, ShootPoint.position, transform.rotation.eulerAngles);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
