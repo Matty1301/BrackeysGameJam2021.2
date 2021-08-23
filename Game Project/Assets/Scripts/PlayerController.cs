@@ -5,18 +5,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rigidbody;
+    private Camera camera;
     private float speed = 500;
+    private Vector3 mousePosWorld;
     private float rateOfFire = 0.3f;
     private bool onCooldown = false;
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        camera = FindObjectOfType<Camera>();
     }
 
     private void Update()
     {
         MovePlayer();
+        RotatePlayer();
         if (Input.GetMouseButton(0) && !onCooldown)
             StartCoroutine(Shoot());
     }
@@ -42,7 +46,17 @@ public class PlayerController : MonoBehaviour
             rigidbody.velocity += new Vector3(speed * Time.fixedDeltaTime, 0, 0);
         }
 
-        transform.LookAt(transform.position + rigidbody.velocity);
+        //transform.LookAt(transform.position + rigidbody.velocity);
+    }
+
+    private void RotatePlayer()
+    {
+        mousePosWorld = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camera.transform.position.y));
+
+        if (Mathf.Abs((mousePosWorld - transform.position).sqrMagnitude) < 0.8f)
+            rigidbody.angularVelocity = Vector3.zero;   //If the mouse is too close to the player, don't rotate
+        else
+            transform.LookAt(new Vector3(mousePosWorld.x, transform.position.y, mousePosWorld.z));
     }
 
     private IEnumerator Shoot()
