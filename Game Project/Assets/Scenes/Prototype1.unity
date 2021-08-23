@@ -275,6 +275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7180015742701001739, guid: e53fa7c9b27fbe749919b04439c05427, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e53fa7c9b27fbe749919b04439c05427, type: 3}
 --- !u!4 &522112872 stripped
@@ -459,7 +463,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1014749473
 MonoBehaviour:
@@ -537,21 +541,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
-      propertyPath: boss
-      value: 
-      objectReference: {fileID: 7004126300939365549, guid: 416477b6a0e114541a9b5156f55065e3, type: 3}
-    - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
-      propertyPath: closedRoom
-      value: 
-      objectReference: {fileID: 452048687457328735, guid: 21a1c71fc3e09824f975819c400e1ffc, type: 3}
     - target: {fileID: 1490997951750028201, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: m_Name
       value: RoomTemplates
       objectReference: {fileID: 0}
     - target: {fileID: 1490997951750028203, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1490997951750028203, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: m_LocalPosition.x

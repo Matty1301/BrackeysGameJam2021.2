@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnnemyAi : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
 
@@ -24,7 +24,7 @@ public class EnnemyAi : MonoBehaviour
 
     public GameObject Bullet;
     public Transform ShootPoint;
-    public float health = 100f;
+    public float health;
 
     private void Awake()
     {
@@ -51,7 +51,6 @@ public class EnnemyAi : MonoBehaviour
 
         //If there are no obstructions between the enemy and the new walk point, then set walk point to true
         if (NavMesh.Raycast(transform.position, walkPoint, out NavMeshHit hit, NavMesh.AllAreas) == false)
-        //if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
         }
@@ -83,8 +82,6 @@ public class EnnemyAi : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            // attack
-            //Instantiate(Bullet, ShootPoint.position, Quaternion.identity);
             ObjectPooler.Instance.SpawnPooledObject(ObjectPooler.PooledObjectType.Bullet, 0, ShootPoint.position, transform.rotation.eulerAngles);
 
             alreadyAttacked = true;
@@ -97,7 +94,7 @@ public class EnnemyAi : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         health -= damage;
 
@@ -110,7 +107,15 @@ public class EnnemyAi : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            TakeDamage(10);
+        }
     }
 }
 

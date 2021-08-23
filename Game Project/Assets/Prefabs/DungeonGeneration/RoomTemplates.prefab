@@ -61,7 +61,8 @@ MonoBehaviour:
   - {fileID: 1418622504102850998, guid: 8618fa2683656b9459ef24a38d63779f, type: 3}
   - {fileID: 7797063341185430963, guid: db51e18a13a42d1469568103583c7659, type: 3}
   - {fileID: 5587069366514914587, guid: 56e911bba6c2ea049abde9b75a43a1c9, type: 3}
-  closedRoom: {fileID: 3316801577136172976, guid: 17ae9c106f91f484e9cff8b8b4862993, type: 3}
+  closedRoom: {fileID: 452048687457328735, guid: 21a1c71fc3e09824f975819c400e1ffc, type: 3}
   rooms: []
   waitTime: 2
-  boss: {fileID: 7004126300939365549, guid: b3f980c7900b5d54986c867ec9201989, type: 3}
+  boss: {fileID: 7004126300939365549, guid: 416477b6a0e114541a9b5156f55065e3, type: 3}
+  enemy: {fileID: 7004126300939365549, guid: 62ad9ddb9ea04de46a9602555beb5840, type: 3}

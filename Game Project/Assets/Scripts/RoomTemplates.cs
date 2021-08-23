@@ -15,19 +15,23 @@ public class RoomTemplates : MonoBehaviour
     public float waitTime;
     private bool spawnedBoss;
     public GameObject boss;
+    public GameObject enemy;
 
     private void Update()
     {
         if(waitTime <= 0 && spawnedBoss == false)
         {
-            for (int i = 0; i < rooms.Count; i++)
+            FindObjectOfType<NavMeshBuilder>().BuildNavMesh();
+
+            for (int i = 1; i < rooms.Count; i++)
             {
-                if(i == rooms.Count - 1)
+                if (i == rooms.Count - 1)
                 {
-                    FindObjectOfType<NavMeshBuilder>().BuildNavMesh();
                     Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
                     spawnedBoss = true;
                 }
+                else
+                    Instantiate(enemy, rooms[i].transform.position, Quaternion.identity);
             }
         }
 
