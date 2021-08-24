@@ -6,16 +6,12 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     private Animator animator;
-
     public NavMeshAgent agent;
-
     public Transform player;
-
-    public LayerMask whatIsGround, whatIsPlayer;
-
+    public LayerMask whatIsPlayer;
 
     public Vector3 walkPoint;
-    bool walkPointSet;
+    private bool walkPointSet;
     public float walkPointRange;
 
     public float timeBetweenAttacks;
@@ -24,8 +20,8 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerIsInSightRange, playerIsInAttackRange;
 
-    public float health;
-    [SerializeField] GameObject ragdoll;
+    public int health;
+    [SerializeField] GameObject ragdollPrefab;
 
     private void Awake()
     {
@@ -102,23 +98,17 @@ public class EnemyAI : MonoBehaviour
 
         if (health <= 0)
         {
-            DestroyEnemy();
+            Invoke("Death", 0.5f);
         }
     }
 
-
-    private void DestroyEnemy()
+    private void Death()
     {
         gameObject.SetActive(false);
-        Instantiate(ragdoll, transform.position, transform.rotation);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            //TakeDamage(20);
-        }
+        GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
+        Vector3 directionFromHitPoint = ragdoll.transform.position - FindObjectOfType<PlayerController>().attackPoint.position;
+        int forceMultiplier = 100;
+        ragdoll.GetComponent<Rigidbody>().AddForce(directionFromHitPoint * forceMultiplier, ForceMode.Impulse);
     }
 }
 
