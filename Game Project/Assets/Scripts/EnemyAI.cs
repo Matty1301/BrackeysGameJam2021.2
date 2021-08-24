@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    private Animator animator;
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -17,23 +19,24 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange;
 
     public float timeBetweenAttacks;
-    bool alreadyAttacked;
+    public bool alreadyAttacked;
 
     public float sightRange, attackRange;
     public bool playerIsInSightRange, playerIsInAttackRange;
 
-    public GameObject Bullet;
-    public Transform ShootPoint;
     public float health;
+    [SerializeField] GameObject ragdoll;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
+        animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
         playerIsInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerIsInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -82,8 +85,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ObjectPooler.Instance.SpawnPooledObject(ObjectPooler.PooledObjectType.Bullet, 0, ShootPoint.position, transform.rotation.eulerAngles);
-
+            animator.SetTrigger("Attack");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -100,7 +102,7 @@ public class EnemyAI : MonoBehaviour
 
         if (health <= 0)
         {
-            Invoke(nameof(DestroyEnemy), .5f);
+            DestroyEnemy();
         }
     }
 
@@ -108,13 +110,14 @@ public class EnemyAI : MonoBehaviour
     private void DestroyEnemy()
     {
         gameObject.SetActive(false);
+        Instantiate(ragdoll, transform.position, transform.rotation);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            TakeDamage(10);
+            TakeDamage(20);
         }
     }
 }
