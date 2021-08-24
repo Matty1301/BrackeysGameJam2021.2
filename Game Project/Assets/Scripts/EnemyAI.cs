@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
 
@@ -117,7 +117,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            TakeDamage(20);
+            //TakeDamage(20);
         }
     }
 }
