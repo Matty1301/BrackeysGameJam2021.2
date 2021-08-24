@@ -83,6 +83,7 @@ namespace RPGCharacterAnimsFREE
                 inputVertical = Input.GetAxisRaw("Vertical");
                 inputRoll = Input.GetButtonDown("L3");
 
+                /*
                 // Injury toggle.
                 if (Input.GetKeyDown(KeyCode.I)) {
                     if (rpgCharacterController.CanStartAction("Injure")) {
@@ -99,6 +100,7 @@ namespace RPGCharacterAnimsFREE
                         rpgCharacterController.EndAction("SlowTime");
                     }
                 }
+                */
                 // Pause toggle.
                 if (Input.GetKeyDown(KeyCode.P)) {
                     if (rpgCharacterController.CanStartAction("SlowTime")) {
@@ -212,6 +214,31 @@ namespace RPGCharacterAnimsFREE
                 context.leftWeapon = -1;
                 context.rightWeapon = weaponNumber;
             }
+
+            // If we've received input, then "doSwitch" is true, and the context is filled out,
+            // so start the SwitchWeapon action.
+            if (doSwitch) { rpgCharacterController.StartAction("SwitchWeapon", context); }
+        }
+
+        public void DrawWeapon()
+        {
+            // Bail out if we can't switch weapons.
+            if (!rpgCharacterController.CanStartAction("SwitchWeapon")) { return; }
+
+            bool doSwitch = false;
+            SwitchWeaponContext context = new SwitchWeaponContext();
+            int weaponNumber = 0;
+
+            int[] twoHandedWeapons = new int[] {
+                (int) Weapon.TwoHandSword,
+            };
+            weaponNumber = twoHandedWeapons[0];
+            // Set up the context and flag that we actually want to perform the switch.
+            doSwitch = true;
+            context.type = "Switch";
+            context.side = "None";
+            context.leftWeapon = -1;
+            context.rightWeapon = weaponNumber;
 
             // If we've received input, then "doSwitch" is true, and the context is filled out,
             // so start the SwitchWeapon action.

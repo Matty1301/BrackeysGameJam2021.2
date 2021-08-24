@@ -4,10 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Rooms
+  - Shadow
+  - Collide
   - RoomSpawnPoint
+<<<<<<< HEAD
   - PlayerBullet
   - EnnemyBullet
+=======
+  - Rooms
+>>>>>>> e07b80ed2f9500abf003d0a6bcd1204ba40156ac
   layers:
   - Default
   - TransparentFX
@@ -16,9 +21,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - Bullet
-  - Enemy
-  - WhatIsGround
+  - 
+  - TempCast
+  - Walkable
   - 
   - 
   - 
