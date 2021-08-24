@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1831015685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831015686}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1831015686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831015685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4765537008891987659}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4765537008335531523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1221,7 @@ GameObject:
   - component: {fileID: 3058456698380019745}
   - component: {fileID: 8127651743485259272}
   - component: {fileID: 2122878350}
+  - component: {fileID: 2122878351}
   m_Layer: 6
   m_Name: RPG-CharacterFREE
   m_TagString: Player
@@ -1210,6 +1241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4765537009760791553}
+  - {fileID: 1831015686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1385,7 +1417,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4765537008891960043}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 7
@@ -1412,6 +1444,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7037c19761c7d4bbfca9b473053488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2122878351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765537008891960043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2aa5bcceaa08954e8b8cceb9f9af1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 1831015686}
 --- !u!1 &4765537008985970923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5205,14 +5250,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
---- !u!4 &4765537008706526266 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
-  m_PrefabInstance: {fileID: 4765537008706228004}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4765537008706352342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 195570, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
+  m_PrefabInstance: {fileID: 4765537008706228004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4765537008706526266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 496414, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
   m_PrefabInstance: {fileID: 4765537008706228004}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4765537008756079261
