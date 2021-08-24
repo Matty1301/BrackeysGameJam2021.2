@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour
     private float attackVolume = 1;
     Collider[] targets;
 
+    private void Start()
+    {
+        GetComponent<RPGCharacterAnimsFREE.RPGCharacterInputController>().DrawWeapon();
+    }
+
     public void RegisterHits()
     {
         targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Enemy"));
         foreach (Collider target in targets)
         {
-            Debug.Log(target.gameObject.name);
-
             if (target.GetComponent<EnemyAI>() != null)
                 target.GetComponent<EnemyAI>().TakeDamage(20);
         }
