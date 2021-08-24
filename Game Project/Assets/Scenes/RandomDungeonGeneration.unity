@@ -389,19 +389,19 @@ PrefabInstance:
       objectReference: {fileID: 3311848102891876635, guid: 104afb4ce02004543b9e08fd34de1b6d, type: 3}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: topRooms.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: leftRooms.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: rightRooms.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: bottomRooms.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: topRooms.Array.data[0]
@@ -414,7 +414,11 @@ PrefabInstance:
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: topRooms.Array.data[2]
       value: 
-      objectReference: {fileID: 3185113665651203919, guid: ee06f0a9acd18654d87ae5f4ccddba75, type: 3}
+      objectReference: {fileID: 3311848102891876635, guid: a19e96eeb78d6da40a95500a5b4efe93, type: 3}
+    - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
+      propertyPath: topRooms.Array.data[3]
+      value: 
+      objectReference: {fileID: 3311848102891876635, guid: b509251f6a820204bb4a281781a17a86, type: 3}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: leftRooms.Array.data[0]
       value: 
@@ -426,7 +430,11 @@ PrefabInstance:
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: leftRooms.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3311848102891876635, guid: b84a522f1fe3b2f43a392ea3109f1646, type: 3}
+    - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
+      propertyPath: leftRooms.Array.data[3]
+      value: 
+      objectReference: {fileID: 3311848102891876635, guid: a19e96eeb78d6da40a95500a5b4efe93, type: 3}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: rightRooms.Array.data[0]
       value: 
@@ -438,11 +446,11 @@ PrefabInstance:
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: rightRooms.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3311848102891876635, guid: b509251f6a820204bb4a281781a17a86, type: 3}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: rightRooms.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3311848102891876635, guid: 1ba1497fd3bf58f479da163a218412a0, type: 3}
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: bottomRooms.Array.data[0]
       value: 
@@ -454,7 +462,11 @@ PrefabInstance:
     - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: bottomRooms.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3311848102891876635, guid: b84a522f1fe3b2f43a392ea3109f1646, type: 3}
+    - target: {fileID: 1490997951750028200, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
+      propertyPath: bottomRooms.Array.data[3]
+      value: 
+      objectReference: {fileID: 3311848102891876635, guid: 1ba1497fd3bf58f479da163a218412a0, type: 3}
     - target: {fileID: 1490997951750028201, guid: 087abe07e0d68a94e81051fda9361792, type: 3}
       propertyPath: m_Name
       value: RoomTemplates
