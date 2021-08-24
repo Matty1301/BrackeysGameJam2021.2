@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7004126300939365538
 Transform:
   m_ObjectHideFlags: 0
@@ -235,13 +235,13 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10
   timeBetweenAttacks: 0.5
+  alreadyAttacked: 0
   sightRange: 10
   attackRange: 5
   playerIsInSightRange: 0
   playerIsInAttackRange: 0
-  Bullet: {fileID: 6455148223271588842, guid: 3e7985b4be5f0ea4d94cc9d88c15534d, type: 3}
-  ShootPoint: {fileID: 3848277334524439874}
   health: 100
+  ragdoll: {fileID: 0}
 --- !u!195 &7250946006057571320
 NavMeshAgent:
   m_ObjectHideFlags: 0

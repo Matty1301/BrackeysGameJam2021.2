@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 863059218880501805}
   - component: {fileID: 3058456698380019745}
   - component: {fileID: 8127651743485259272}
+  - component: {fileID: 2122878350}
   m_Layer: 6
   m_Name: RPG-CharacterFREE
   m_TagString: Player
@@ -1399,6 +1400,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 2
+--- !u!114 &2122878350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765537008891960043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7037c19761c7d4bbfca9b473053488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4765537008985970923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5125,6 +5138,10 @@ PrefabInstance:
     - target: {fileID: 195570, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Greatsword_Straight_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 195570, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 195570, guid: e7196d0541b91bf4f8cab39924cb6d49, type: 3}
       propertyPath: m_IsActive

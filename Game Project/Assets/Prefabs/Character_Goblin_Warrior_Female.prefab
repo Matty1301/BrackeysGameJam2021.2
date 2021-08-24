@@ -1240,6 +1240,8 @@ GameObject:
   - component: {fileID: 5972378991847775834}
   - component: {fileID: 5972378991854901379}
   - component: {fileID: 5972378991854901388}
+  - component: {fileID: 703871551667992588}
+  - component: {fileID: -8957381961111026386}
   m_Layer: 0
   m_Name: Character_Goblin_Warrior_Female
   m_TagString: Untagged
@@ -1255,7 +1257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5972378991854901378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.45, y: 0, z: 4.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 5972378991854639718}
@@ -1306,7 +1308,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5972378991854901378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64699bc80d320ae45ba01a16340e9e97, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d4499b9496857d48b80c4f9cb304d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
@@ -1318,16 +1320,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 10
+  walkPointRange: 5
   timeBetweenAttacks: 1.267
   alreadyAttacked: 0
   sightRange: 8
   attackRange: 2
   playerIsInSightRange: 0
   playerIsInAttackRange: 0
-  Bullet: {fileID: 0}
-  ShootPoint: {fileID: 0}
   health: 100
+  ragdoll: {fileID: 2846963339279567469, guid: cbf602d6c4e52e448845476e44b53f56, type: 3}
 --- !u!195 &5972378991854901388
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1350,6 +1351,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!136 &703871551667992588
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972378991854901378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!54 &-8957381961111026386
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972378991854901378}
+  serializedVersion: 2
+  m_Mass: 80
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &5972378991854901664
 GameObject:
   m_ObjectHideFlags: 0
