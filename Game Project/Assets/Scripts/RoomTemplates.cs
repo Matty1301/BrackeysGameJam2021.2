@@ -11,7 +11,6 @@ public class RoomTemplates : MonoBehaviour
     public GameObject closedRoom;
 
     public List<GameObject> rooms;
-    public List<GameObject> Enemies;
 
     public float waitTime;
     private bool spawnedBoss;
@@ -42,11 +41,7 @@ public class RoomTemplates : MonoBehaviour
                 }
                 else
                 {
-                    for (int enemiesToSpawn = 0; enemiesToSpawn < Random.Range(2, 6); enemiesToSpawn++)
-                    {
-                        Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Enemy, Random.Range(0, objectPooler.enemyPrefabs.Length),
-                            rooms[i].transform.position, Vector3.zero));
-                    }
+                    rooms[i].GetComponent<RoomScript>().SpawnEnemies();
                 }
             }
         }
@@ -60,12 +55,17 @@ public class RoomTemplates : MonoBehaviour
             if (!Boss.activeInHierarchy)
             {
                 Win.SetActive(true);
-                int enemiesNumber = Enemies.Count;
-                for (int i = 0; i < enemiesNumber; i++)
+
+                for (int i = 1; i < rooms.Count; i++)
                 {
-                    Enemies[i].SetActive(false);
+                    rooms[i].GetComponent<RoomScript>().disableEnemies();
                 }
             }
         }
+    }
+
+    public void AddRoom(GameObject CurrentRoom)
+    {
+        rooms.Add(CurrentRoom);
     }
 }
