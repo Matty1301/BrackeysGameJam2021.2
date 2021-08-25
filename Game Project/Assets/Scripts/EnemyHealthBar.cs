@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    private EnemyAI enemyAI;
+    private CharacterController enemyAI;
     private Slider healthBarFill;
 
     private void Awake()
     {
-        enemyAI = transform.GetComponentInParent<EnemyAI>();
+        enemyAI = transform.GetComponentInParent<CharacterController>();
         healthBarFill = GetComponent<Slider>();
     }
 

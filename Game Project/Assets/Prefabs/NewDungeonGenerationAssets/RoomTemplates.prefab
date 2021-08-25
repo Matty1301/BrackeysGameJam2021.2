@@ -58,5 +58,5 @@ MonoBehaviour:
   closedRoom: {fileID: 3311848102891876635, guid: 104afb4ce02004543b9e08fd34de1b6d, type: 3}
   rooms: []
   waitTime: 5
-  boss: {fileID: 7004126300939365549, guid: 416477b6a0e114541a9b5156f55065e3, type: 3}
+  boss: {fileID: 5198706590898290040, guid: 9667689ccf5cd6548b0e58567271e072, type: 3}
   enemy: {fileID: 5198706590898290040, guid: 98050cf7ea64ace4eafd9bac16f05934, type: 3}
