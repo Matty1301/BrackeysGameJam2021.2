@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public Transform attackPoint;
     private float attackVolume = 1;
     private Collider[] targets;
+    public GameObject Win, Lose;
+
 
     public int maxHealth;
     [HideInInspector] public int health;
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private void Death()
     {
         Debug.Log("Game over");
+        Lose.SetActive(true);
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }

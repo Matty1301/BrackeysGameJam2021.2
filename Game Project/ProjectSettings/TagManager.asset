@@ -8,6 +8,8 @@ TagManager:
   - Collide
   - RoomSpawnPoint
   - Rooms
+  - Win
+  - Lose
   layers:
   - Default
   - TransparentFX

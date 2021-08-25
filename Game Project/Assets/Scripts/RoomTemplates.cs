@@ -11,11 +11,14 @@ public class RoomTemplates : MonoBehaviour
     public GameObject closedRoom;
 
     public List<GameObject> rooms;
+    public List<GameObject> Enemies;
 
     public float waitTime;
     private bool spawnedBoss;
-    public GameObject boss;
-    public GameObject enemy;
+    public GameObject bossPrefab;
+    public GameObject enemyPrefab;
+    public GameObject Win;
+    private GameObject Boss;
 
     private void Update()
     {
@@ -27,17 +30,37 @@ public class RoomTemplates : MonoBehaviour
             {
                 if (i == rooms.Count - 1)
                 {
-                    Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
+                    Boss = Instantiate(bossPrefab, rooms[i].transform.position, Quaternion.identity).gameObject;
                     spawnedBoss = true;
                 }
                 else
-                    Instantiate(enemy, rooms[i].transform.position, Quaternion.identity);
+                {
+                    int x = 0;
+                    int randomX = Random.RandomRange(1, 2);
+                    while (x < 1)
+                    {
+                        x++;
+                        Enemies.Add(Instantiate(enemyPrefab, rooms[i].transform.position, Quaternion.identity));
+                    }
+                }
             }
         }
 
         else
         {
             waitTime -= Time.deltaTime;
+        }
+        if (spawnedBoss)
+        {
+            if (!Boss.active)
+            {
+                Win.SetActive(true);
+                int EnnemiesNumber = Enemies.Count;
+                for (int i = 0; i < EnnemiesNumber; i++)
+                {
+                    Enemies[i].SetActive(false);
+                }
+            }
         }
     }
 }
