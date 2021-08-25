@@ -1444,6 +1444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1831015686}
+  maxHealth: 100
+  health: 0
   ragdollPrefab: {fileID: 2159344188836501235, guid: 78543a4ffd40af74bb8cbb1b7c35909b, type: 3}
 --- !u!1 &4765537008985970923
 GameObject:

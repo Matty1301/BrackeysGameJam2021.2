@@ -19,13 +19,25 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
     }
 
+    private void Update()
+    {
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        {
+            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo);
+            transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
+        }
+    }
+
     public void RegisterHits()
     {
-        targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Enemy"));
-        foreach (Collider target in targets)
+        if (gameObject.activeInHierarchy)
         {
-            if (target.GetComponent<EnemyAI>() != null)
-                target.GetComponent<EnemyAI>().TakeDamage(20);
+            targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Enemy"));
+            foreach (Collider target in targets)
+            {
+                if (target.GetComponent<CharacterController>() != null)
+                    target.GetComponent<CharacterController>().TakeDamage(25);
+            }
         }
     }
 

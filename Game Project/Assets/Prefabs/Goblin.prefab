@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 1791987141132274047}
   - component: {fileID: 4417582709925093518}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,11 +262,27 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 6
-  timeBetweenAttacks: 1.267
+  timeBetweenAttacks: 2
   alreadyAttacked: 0
   attackPoint: {fileID: 7540281814289600918}
+  attackVolume: 1
+  sightRange: 8
+  attackRange: 1.5
+  playerIsInSightRange: 0
+  playerIsInAttackRange: 0
+  maxHealth: 100
+  health: 100
+  ragdollPrefab: {fileID: 2846963339279567469, guid: cbf602d6c4e52e448845476e44b53f56, type: 3}
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  walkPointRange: 6
+  timeBetweenAttacks: 2
+  alreadyAttacked: 0
+  attackPoint: {fileID: 7540281814289600918}
+  attackVolume: 1
   sightRange: 8
   attackRange: 1.5
   playerIsInSightRange: 0
@@ -5077,7 +5093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1023515880238256309, guid: 1f92e20746edfde459e2ce79cd28ebd7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1023515880238256309, guid: 1f92e20746edfde459e2ce79cd28ebd7, type: 3}
       propertyPath: m_SizeDelta.y
