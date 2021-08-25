@@ -38,13 +38,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2963232649562618702}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
+  m_LocalRotation: {x: 0.39703658, y: -0.50231147, z: 0.729063, w: -0.24189359}
   m_LocalPosition: {x: 10.62, y: 5.14, z: 1.97}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 80, y: 80, z: 80}
   m_Children: []
   m_Father: {fileID: 5381788190720686721}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 270}
+  m_LocalEulerAnglesHint: {x: 32.708, y: 77.642, z: 243.28}
 --- !u!33 &2963232649565732620
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 1791987141132274047}
   - component: {fileID: 4417582709925093518}
   m_Layer: 7
-  m_Name: Goblin
+  m_Name: Goblin2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,23 +273,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   ragdollPrefab: {fileID: 2846963339279567469, guid: cbf602d6c4e52e448845476e44b53f56, type: 3}
-  agent: {fileID: 0}
-  player: {fileID: 0}
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
   walkPointRange: 6
-  timeBetweenAttacks: 2
-  alreadyAttacked: 0
-  attackPoint: {fileID: 7540281814289600918}
-  attackVolume: 1
-  sightRange: 8
-  attackRange: 1.5
-  playerIsInSightRange: 0
-  playerIsInAttackRange: 0
-  maxHealth: 100
-  health: 100
-  ragdollPrefab: {fileID: 2846963339279567469, guid: cbf602d6c4e52e448845476e44b53f56, type: 3}
 --- !u!54 &8540752505054768202
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -304,7 +288,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!195 &1791987141132274047
 NavMeshAgent:

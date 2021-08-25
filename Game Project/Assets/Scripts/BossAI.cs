@@ -17,5 +17,11 @@ public class BossAI : CharacterController
         if (playerIsInSightRange && !playerIsInAttackRange) ChasePlayer();
         if (playerIsInSightRange && playerIsInAttackRange) AttackPlayer();
     }
+
+    protected override void Death()
+    {
+        base.Death();
+        Debug.Log("You win");
+    }
 }
 

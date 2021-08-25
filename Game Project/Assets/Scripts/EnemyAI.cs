@@ -6,19 +6,15 @@ using UnityEngine.AI;
 public class EnemyAI : CharacterController
 {
     private Vector3 walkPoint;
-    private bool walkPointSet = true;
+    private bool walkPointSet;
     public float walkPointRange;
 
-    private void Awake()
+    private void Start()
     {
-        animator = GetComponentInChildren<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-        startPos = transform.position;
-        walkPoint = startPos;
+        SearchWalkPoint();
     }
 
-    private void Update()
+    protected override void Update()
     {
         animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
         playerIsInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -58,67 +54,6 @@ public class EnemyAI : CharacterController
             walkPointSet = false;
             Invoke("SearchWalkPoint", 5);
         }
-    }
-
-    private void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
-    }
-
-    private void AttackPlayer()
-    {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        if (!alreadyAttacked)
-        {
-            animator.SetTrigger("Attack");
-            alreadyAttacked = true;
-            Invoke("RegisterHits", 0.8f);
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-
-    private void RegisterHits()
-    {
-        if (gameObject.activeInHierarchy)
-        {
-            targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Player"));
-            foreach (Collider target in targets)
-            {
-                if (target.GetComponent<PlayerController>() != null)
-                    target.GetComponent<PlayerController>().TakeDamage(10);
-            }
-        }
-    }
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        animator.SetTrigger("Hit");
-
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Death();
-        }
-    }
-
-    private void Death()
-    {
-        gameObject.SetActive(false);
-        GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
-        Vector3 directionFromHitPoint = Vector3.zero;
-        if (FindObjectOfType<PlayerController>())
-            directionFromHitPoint = ragdoll.transform.position - FindObjectOfType<PlayerController>().attackPoint.position;
-        int forceMultiplier = 100;
-        ragdoll.GetComponent<Rigidbody>().AddForce(directionFromHitPoint * forceMultiplier, ForceMode.Impulse);
     }
 }
 

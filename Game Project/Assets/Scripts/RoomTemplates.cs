@@ -20,6 +20,13 @@ public class RoomTemplates : MonoBehaviour
     public GameObject Win;
     private GameObject Boss;
 
+    private ObjectPooler objectPooler;
+
+    private void Awake()
+    {
+        objectPooler = FindObjectOfType<ObjectPooler>();
+    }
+
     private void Update()
     {
         if(waitTime <= 0 && spawnedBoss == false)
@@ -35,28 +42,26 @@ public class RoomTemplates : MonoBehaviour
                 }
                 else
                 {
-                    int x = 0;
-                    int randomX = Random.RandomRange(1, 2);
-                    while (x < 1)
+                    for (int enemiesToSpawn = 0; enemiesToSpawn < Random.Range(2, 6); enemiesToSpawn++)
                     {
-                        x++;
-                        Enemies.Add(Instantiate(enemyPrefab, rooms[i].transform.position, Quaternion.identity));
+                        Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Enemy, Random.Range(0, objectPooler.enemyPrefabs.Length),
+                            rooms[i].transform.position, Vector3.zero));
                     }
                 }
             }
         }
 
-        else
+        else if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;
         }
         if (spawnedBoss)
         {
-            if (!Boss.active)
+            if (!Boss.activeInHierarchy)
             {
                 Win.SetActive(true);
-                int EnnemiesNumber = Enemies.Count;
-                for (int i = 0; i < EnnemiesNumber; i++)
+                int enemiesNumber = Enemies.Count;
+                for (int i = 0; i < enemiesNumber; i++)
                 {
                     Enemies[i].SetActive(false);
                 }
