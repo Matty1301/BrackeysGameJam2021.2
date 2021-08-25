@@ -8,13 +8,15 @@ public class PlayerController : MonoBehaviour
     private float attackVolume = 1;
     private Collider[] targets;
 
-    private int health = 100;
+    public int maxHealth;
+    [HideInInspector] public int health;
 
     [SerializeField] GameObject ragdollPrefab;
 
     private void Start()
     {
         GetComponent<RPGCharacterAnimsFREE.RPGCharacterInputController>().DrawWeapon();
+        health = maxHealth;
     }
 
     public void RegisterHits()
