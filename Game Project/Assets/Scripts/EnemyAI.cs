@@ -10,8 +10,9 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public LayerMask whatIsPlayer;
 
+    private Vector3 startPos;
     public Vector3 walkPoint;
-    private bool walkPointSet;
+    private bool walkPointSet = true;
     public float walkPointRange;
 
     public float timeBetweenAttacks;
@@ -23,7 +24,8 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerIsInSightRange, playerIsInAttackRange;
 
-    public int health;
+    public int maxHealth;
+    [HideInInspector] public int health;
     [SerializeField] GameObject ragdollPrefab;
 
     private void Awake()
@@ -31,6 +33,8 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        startPos = transform.position;
+        walkPoint = startPos;
     }
 
     private void Update()
@@ -46,29 +50,33 @@ public class EnemyAI : MonoBehaviour
 
     private void SearchWalkPoint()
     {
-        float RandomZ = Random.Range(-walkPointRange, walkPointRange);
-        float RandomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + RandomX, transform.position.y, transform.position.z + RandomZ);
-
-        //If there are no obstructions between the enemy and the new walk point, then set walk point to true
-        if (NavMesh.Raycast(transform.position, walkPoint, out NavMeshHit hit, NavMesh.AllAreas) == false)
+        if (walkPointSet == false)
         {
-            walkPointSet = true;
+            float RandomZ = Random.Range(-1, 2);
+            float RandomX = Random.Range(-1, 2);
+
+            walkPoint = new Vector3(startPos.x + (walkPointRange * RandomX), transform.position.y, startPos.z + (walkPointRange * RandomZ));
+
+            //If there are no obstructions between the enemy and the new walk point, then set walk point to true
+            if (NavMesh.Raycast(transform.position, walkPoint, out NavMeshHit hit, NavMesh.AllAreas) == false)
+            {
+                agent.SetDestination(walkPoint);
+                walkPointSet = true;
+            }
+            else
+                SearchWalkPoint();
         }
     }
 
     private void Patrolling()
     {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint.magnitude < 1f && walkPointSet)
+        {
             walkPointSet = false;
+            Invoke("SearchWalkPoint", 5);
+        }
     }
 
     private void ChasePlayer()
@@ -122,7 +130,9 @@ public class EnemyAI : MonoBehaviour
     {
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
-        Vector3 directionFromHitPoint = ragdoll.transform.position - FindObjectOfType<PlayerController>().attackPoint.position;
+        Vector3 directionFromHitPoint = Vector3.zero;
+        if (FindObjectOfType<PlayerController>())
+            directionFromHitPoint = ragdoll.transform.position - FindObjectOfType<PlayerController>().attackPoint.position;
         int forceMultiplier = 100;
         ragdoll.GetComponent<Rigidbody>().AddForce(directionFromHitPoint * forceMultiplier, ForceMode.Impulse);
     }
