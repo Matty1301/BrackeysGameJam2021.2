@@ -161,10 +161,10 @@ namespace RPGCharacterAnimsFREE
             if (!rpgCharacterController.CanStartAction("Attack")) { return; }
             if (inputAttackL) {
                 rpgCharacterController.StartAction("Attack", new Actions.AttackContext("Attack", "Left"));
-                GetComponent<PlayerController>().RegisterHits();
+                GetComponent<PlayerController>().Invoke("RegisterHits", 0.5f);
             } else if (inputAttackR) {
                 rpgCharacterController.StartAction("Attack", new Actions.AttackContext("Attack", "Right"));
-                GetComponent<PlayerController>().RegisterHits();
+                GetComponent<PlayerController>().Invoke("RegisterHits", 0.5f);
             }
         }
 

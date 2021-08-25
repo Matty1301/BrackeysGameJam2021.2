@@ -6,7 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public Transform attackPoint;
     private float attackVolume = 1;
-    Collider[] targets;
+    private Collider[] targets;
+
+    private int health = 100;
+
+    [SerializeField] GameObject ragdollPrefab;
 
     private void Start()
     {
@@ -21,5 +25,22 @@ public class PlayerController : MonoBehaviour
             if (target.GetComponent<EnemyAI>() != null)
                 target.GetComponent<EnemyAI>().TakeDamage(20);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        Debug.Log("Game over");
+        gameObject.SetActive(false);
+        GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }
 }

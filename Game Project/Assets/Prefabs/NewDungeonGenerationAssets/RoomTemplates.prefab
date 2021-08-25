@@ -59,4 +59,4 @@ MonoBehaviour:
   rooms: []
   waitTime: 5
   boss: {fileID: 7004126300939365549, guid: 416477b6a0e114541a9b5156f55065e3, type: 3}
-  enemy: {fileID: 5972378991854901378, guid: 578552df9c7d5e546abaa97ee6426e4d, type: 3}
+  enemy: {fileID: 5198706590898290040, guid: 98050cf7ea64ace4eafd9bac16f05934, type: 3}

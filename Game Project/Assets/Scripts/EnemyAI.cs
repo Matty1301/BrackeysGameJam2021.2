@@ -16,6 +16,9 @@ public class EnemyAI : MonoBehaviour
 
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
+    public Transform attackPoint;
+    private float attackVolume = 1;
+    private Collider[] targets;
 
     public float sightRange, attackRange;
     public bool playerIsInSightRange, playerIsInAttackRange;
@@ -25,7 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -83,7 +86,18 @@ public class EnemyAI : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             alreadyAttacked = true;
+            Invoke("RegisterHits", 0.8f);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+
+    private void RegisterHits()
+    {
+        targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Player"));
+        foreach (Collider target in targets)
+        {
+            if (target.GetComponent<PlayerController>() != null)
+                target.GetComponent<PlayerController>().TakeDamage(10);
         }
     }
 
@@ -100,7 +114,7 @@ public class EnemyAI : MonoBehaviour
 
         if (health <= 0)
         {
-            Invoke("Death", 0.5f);
+            Death();
         }
     }
 
