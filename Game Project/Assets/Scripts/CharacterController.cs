@@ -95,7 +95,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    protected void Death()
+    protected virtual void Death()
     {
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);

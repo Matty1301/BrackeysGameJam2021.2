@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ObjectPooler : Singleton<ObjectPooler>
 {
-    public GameObject[] bulletPrefabs;
+    public GameObject[] enemyPrefabs;
 
     public enum PooledObjectType
     {
-        Bullet,
+        Enemy,
     }
 
     private struct PooledObject
@@ -18,7 +18,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         public PooledObjectController m_Controller;
     }
 
-    private List<PooledObject> bulletPool = new List<PooledObject>();
+    private List<PooledObject> enemyPool = new List<PooledObject>();
 
     public GameObject SpawnPooledObject(PooledObjectType objectType, int prefabIndex, Vector3 spawnPoint, Vector3 spawnRotation)
     {
@@ -27,10 +27,10 @@ public class ObjectPooler : Singleton<ObjectPooler>
         Transform objectParent = null;
         switch (objectType)
         {
-            case PooledObjectType.Bullet:
-                objectPool = bulletPool;
-                objectPrefabs = bulletPrefabs;
-                objectParent = transform.Find("BulletPool");
+            case PooledObjectType.Enemy:
+                objectPool = enemyPool;
+                objectPrefabs = enemyPrefabs;
+                objectParent = transform.Find("EnemyPool");
                 break;
         }
 
