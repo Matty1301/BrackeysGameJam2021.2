@@ -94,6 +94,8 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        animator.SetTrigger("Hit");
+
         health -= damage;
 
         if (health <= 0)
