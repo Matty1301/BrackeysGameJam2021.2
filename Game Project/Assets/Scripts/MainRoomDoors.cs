@@ -17,7 +17,9 @@ public class MainRoomDoors : MonoBehaviour
     {
         for (int i = 0; i < Doors.Count; i++)
         {
-            Doors[i].GetComponent<Animation>().Play();
+            Animation animation = Doors[i].GetComponent<Animation>();
+            animation.clip = animation.GetClip("DoorOpening");
+            animation.Play();
         }
     }
 }

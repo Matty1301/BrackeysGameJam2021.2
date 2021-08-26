@@ -5046,7 +5046,7 @@ MonoBehaviour:
   attackRange: 2
   playerIsInSightRange: 0
   playerIsInAttackRange: 0
-  maxHealth: 150
+  maxHealth: 125
   health: 100
   ragdollPrefab: {fileID: 2538651332340436718, guid: 56d59e30b37ba8348a39240a648e2f5b, type: 3}
   walkPointRange: 6
