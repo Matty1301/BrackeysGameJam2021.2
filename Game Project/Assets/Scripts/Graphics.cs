@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class Music : MonoBehaviour
+public class Graphics : MonoBehaviour
 {
-    public AudioMixer audioMixer;
-    public Slider volumeSlider;
+    public Dropdown graphics;
+    
     // Start is called before the first frame update
     void Start()
     {
-        volumeSlider.value = PublicVariables.volume;
+        graphics.value = PublicVariables.quality;
     }
 
     // Update is called once per frame
     void Update()
     {
-        audioMixer.SetFloat("Volume", PublicVariables.volume);
+        
     }
 }

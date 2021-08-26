@@ -8,4 +8,15 @@ public class SettingsMenu : MonoBehaviour
     {
         PublicVariables.volume = (int)input;
     }
+
+    public void setQuality(int quality)
+    {
+        PublicVariables.quality = quality;
+        QualitySettings.SetQualityLevel(quality);
+    }
+
+    public void SetFullScreen(bool FullScreen)
+    {
+        Screen.fullScreen = FullScreen;
+    }
 }
