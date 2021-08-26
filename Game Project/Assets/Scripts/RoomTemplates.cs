@@ -20,6 +20,8 @@ public class RoomTemplates : MonoBehaviour
 
     private ObjectPooler objectPooler;
 
+    public List<GameObject> Collectables;
+
     private void Awake()
     {
         objectPooler = FindObjectOfType<ObjectPooler>();

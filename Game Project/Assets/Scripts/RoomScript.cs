@@ -8,6 +8,7 @@ public class RoomScript : MonoBehaviour
 
     public List<GameObject> Enemies;
     public List<GameObject> Doors;
+    public List<GameObject> Collectables;
     private ObjectPooler objectPooler;
 
     [SerializeField] private int EnemyNum;
@@ -17,7 +18,10 @@ public class RoomScript : MonoBehaviour
     {
         roomTemplate = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         roomTemplate.AddRoom(gameObject);
+        Collectables = roomTemplate.Collectables;
         objectPooler = FindObjectOfType<ObjectPooler>();
+
+        spawnCollectables();
 
         openDoors();
     }
@@ -85,6 +89,15 @@ public class RoomScript : MonoBehaviour
 
         spawnedEnemies = true;
     }
+
+    public void spawnCollectables()
+    {
+        for (int i = 0; i < Random.Range(2, 4); i++)
+        {
+            Instantiate(Collectables[Random.Range(0, Collectables.Count - 1)], new Vector3(Random.Range(-11, 11) + transform.position.x, 0.5f, Random.Range(-11, 11) + transform.position.z), Quaternion.identity);
+        }
+    }
+
 
     public void disableEnemies()
     {

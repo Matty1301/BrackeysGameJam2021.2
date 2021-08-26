@@ -96,6 +96,7 @@ MonoBehaviour:
   Enemies: []
   Doors:
   - {fileID: 4431071266779864953}
+  Collectables: []
   EnemyNum: 0
 --- !u!65 &4462921286925216369
 BoxCollider:

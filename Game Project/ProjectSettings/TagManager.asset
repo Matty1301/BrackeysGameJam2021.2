@@ -11,6 +11,8 @@ TagManager:
   - Win
   - Lose
   - Enemy
+  - heals
+  - Jewel
   layers:
   - Default
   - TransparentFX
