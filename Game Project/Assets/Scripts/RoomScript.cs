@@ -108,10 +108,6 @@ public class RoomScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            //openDoors();
-        }
         if (other.gameObject.tag == "Enemy")
         {
             EnemyNum--;
