@@ -10,6 +10,7 @@ TagManager:
   - Rooms
   - Win
   - Lose
+  - Enemy
   layers:
   - Default
   - TransparentFX
