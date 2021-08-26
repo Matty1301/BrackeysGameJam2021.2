@@ -40,11 +40,49 @@ public class RoomScript : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        for (int enemiesToSpawn = 0; enemiesToSpawn < Random.Range(2, 6); enemiesToSpawn++)
+        int enemyType = Random.Range(0, objectPooler.enemyTypes + 1);
+        switch (enemyType)
         {
-            Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Enemy, Random.Range(0, objectPooler.enemyPrefabs.Length),
-                transform.position, Vector3.zero));
+            case 0:
+                for (int goblinsToSpawn = 0; goblinsToSpawn < Random.Range(2, 6); goblinsToSpawn++)
+                {
+                    Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Goblin,
+                        Random.Range(0, objectPooler.goblinPrefabs.Length), transform.position, Vector3.zero));
+                }
+                break;
+            case 1:
+                for (int golemsToSpawn = 0; golemsToSpawn < Random.Range(1, 3); golemsToSpawn++)
+                {
+                    Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Golem,
+                        Random.Range(0, objectPooler.golemPrefabs.Length), transform.position, Vector3.zero));
+                }
+                break;
+            case 2:
+                for (int skeletonKnightsToSpawn = 0; skeletonKnightsToSpawn < Random.Range(3, 8); skeletonKnightsToSpawn++)
+                {
+                    Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.SkeletonKnight,
+                        Random.Range(0, objectPooler.skeletonKnightPrefabs.Length), transform.position, Vector3.zero));
+                }
+                break;
+            case 3:
+                for (int goblinsToSpawn = 0; goblinsToSpawn < Random.Range(1, 3); goblinsToSpawn++)
+                {
+                    Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Goblin,
+                        Random.Range(0, objectPooler.goblinPrefabs.Length), transform.position, Vector3.zero));
+                }
+                for (int golemsToSpawn = 0; golemsToSpawn < Random.Range(1, 2); golemsToSpawn++)
+                {
+                    Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Golem,
+                        Random.Range(0, objectPooler.golemPrefabs.Length), transform.position, Vector3.zero));
+                }
+                for (int skeletonKnightsToSpawn = 0; skeletonKnightsToSpawn < Random.Range(2, 4); skeletonKnightsToSpawn++)
+                {
+                    Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.SkeletonKnight,
+                        Random.Range(0, objectPooler.skeletonKnightPrefabs.Length), transform.position, Vector3.zero));
+                }
+                break;
         }
+
         spawnedEnemies = true;
     }
 

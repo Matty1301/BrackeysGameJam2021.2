@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
         {
             Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
                 Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
-            if (hitInfo.collider)    Debug.Log(hitInfo.collider.gameObject.layer);
             transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
         }
     }
