@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 3311848102891876635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 5239073906076243923}
   - {fileID: 8132690709367096711}
@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomTemplate: {fileID: 0}
   Enemies: []
+  Doors: []
+  EnemyNum: 0
 --- !u!1001 &1524112326294074
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
-            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo);
+            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
+                Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
+            if (hitInfo.collider)    Debug.Log(hitInfo.collider.gameObject.layer);
             transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
         }
     }

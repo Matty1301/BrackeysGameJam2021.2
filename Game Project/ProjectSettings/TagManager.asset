@@ -10,6 +10,7 @@ TagManager:
   - Rooms
   - Win
   - Lose
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemy
   - TempCast
   - Walkable
-  - 
+  - Wall
   - 
   - 
   - 

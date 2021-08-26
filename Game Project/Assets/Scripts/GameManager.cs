@@ -13,12 +13,6 @@ public class GameManager : Singleton<GameManager>
     }
     public GameState currentGameState { get; private set; }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
-    }
-
     public void TogglePause()
     {
         if (currentGameState == GameState.Running)
