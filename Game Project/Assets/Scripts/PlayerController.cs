@@ -61,4 +61,20 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }
+
+    private void Heals(int healthA)
+    {
+        health += healthA;
+        if (health > maxHealth)
+            health = maxHealth;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "heals")
+        {
+            Heals(15);
+            other.gameObject.SetActive(false);
+        }
+    }
 }
