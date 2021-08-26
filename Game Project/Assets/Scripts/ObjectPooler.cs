@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class ObjectPooler : Singleton<ObjectPooler>
 {
-    public GameObject[] enemyPrefabs;
+    public GameObject[] goblinPrefabs, golemPrefabs, skeletonKnightPrefabs;
+
+    public int enemyTypes = 3;
 
     public enum PooledObjectType
     {
-        Enemy,
+        Goblin,
+        Golem,
+        SkeletonKnight,
     }
 
     private struct PooledObject
@@ -18,7 +22,9 @@ public class ObjectPooler : Singleton<ObjectPooler>
         public PooledObjectController m_Controller;
     }
 
-    private List<PooledObject> enemyPool = new List<PooledObject>();
+    private List<PooledObject> goblinPool = new List<PooledObject>();
+    private List<PooledObject> golemPool = new List<PooledObject>();
+    private List<PooledObject> skeletonKnightPool = new List<PooledObject>();
 
     public GameObject SpawnPooledObject(PooledObjectType objectType, int prefabIndex, Vector3 spawnPoint, Vector3 spawnRotation)
     {
@@ -27,10 +33,20 @@ public class ObjectPooler : Singleton<ObjectPooler>
         Transform objectParent = null;
         switch (objectType)
         {
-            case PooledObjectType.Enemy:
-                objectPool = enemyPool;
-                objectPrefabs = enemyPrefabs;
-                objectParent = transform.Find("EnemyPool");
+            case PooledObjectType.Goblin:
+                objectPool = goblinPool;
+                objectPrefabs = goblinPrefabs;
+                objectParent = transform.Find("GoblinPool");
+                break;
+            case PooledObjectType.Golem:
+                objectPool = golemPool;
+                objectPrefabs = golemPrefabs;
+                objectParent = transform.Find("GolemPool");
+                break;
+            case PooledObjectType.SkeletonKnight:
+                objectPool = skeletonKnightPool;
+                objectPrefabs = skeletonKnightPrefabs;
+                objectParent = transform.Find("SkeletonKnightPool");
                 break;
         }
 

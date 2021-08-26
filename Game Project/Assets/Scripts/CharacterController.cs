@@ -18,6 +18,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] protected float attackVolume;
     protected Collider[] targets;
 
+    public int weaponDamage;
     public float sightRange, attackRange;
     public bool playerIsInSightRange, playerIsInAttackRange;
 
@@ -73,7 +74,7 @@ public class CharacterController : MonoBehaviour
             foreach (Collider target in targets)
             {
                 if (target.GetComponent<PlayerController>() != null)
-                    target.GetComponent<PlayerController>().TakeDamage(10);
+                    target.GetComponent<PlayerController>().TakeDamage(weaponDamage);
             }
         }
     }
