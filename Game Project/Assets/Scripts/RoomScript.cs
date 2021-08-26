@@ -10,10 +10,9 @@ public class RoomScript : MonoBehaviour
     public List<GameObject> Doors;
     private ObjectPooler objectPooler;
 
-    private int EnemyNum = 0;
+    [SerializeField] private int EnemyNum;
     private bool spawnedEnemies = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         roomTemplate = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
@@ -23,9 +22,16 @@ public class RoomScript : MonoBehaviour
         openDoors();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            if (Enemies[i].activeInHierarchy == false)
+                Enemies.Remove(Enemies[i]);
+        }
+
+        EnemyNum = Enemies.Count;
+
         if(EnemyNum == 0 && spawnedEnemies)
         {
             openDoors();
@@ -34,19 +40,17 @@ public class RoomScript : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        FindObjectOfType<NavMeshBuilder>().BuildNavMesh();
-
         for (int enemiesToSpawn = 0; enemiesToSpawn < Random.Range(2, 6); enemiesToSpawn++)
         {
-            Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Enemy, Random.Range(0, objectPooler.enemyPrefabs.Length), transform.position, Vector3.zero));
+            Enemies.Add(objectPooler.SpawnPooledObject(ObjectPooler.PooledObjectType.Enemy, Random.Range(0, objectPooler.enemyPrefabs.Length),
+                transform.position, Vector3.zero));
         }
         spawnedEnemies = true;
     }
 
     public void disableEnemies()
     {
-        int enemiesNumber = Enemies.Count;
-        for (int i = 0; i < enemiesNumber; i++)
+        for (int i = 0; i < EnemyNum; i++)
         {
             Enemies[i].SetActive(false);
         }
@@ -66,6 +70,10 @@ public class RoomScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.tag == "Player")
+        {
+            //openDoors();
+        }
         if (other.gameObject.tag == "Enemy")
         {
             EnemyNum--;
@@ -74,7 +82,7 @@ public class RoomScript : MonoBehaviour
 
     public void closeDoors()
     {
-        for (int i = 1; i < Doors.Count; i++)
+        for (int i = 0; i < Doors.Count; i++)
         {
             Doors[i].SetActive(true);
         }
@@ -82,7 +90,7 @@ public class RoomScript : MonoBehaviour
 
     public void openDoors()
     {
-        for (int i = 1; i < Doors.Count; i++)
+        for (int i = 0; i < Doors.Count; i++)
         {
             Doors[i].SetActive(false);
         }

@@ -40,8 +40,6 @@ public class EnemyAI : CharacterController
                 agent.SetDestination(walkPoint);
                 walkPointSet = true;
             }
-            else
-                SearchWalkPoint();
         }
     }
 
@@ -49,7 +47,7 @@ public class EnemyAI : CharacterController
     {
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        if (distanceToWalkPoint.magnitude < 1f && walkPointSet)
+        if ((distanceToWalkPoint.magnitude < 1f && walkPointSet) || !walkPointSet)
         {
             walkPointSet = false;
             Invoke("SearchWalkPoint", 5);

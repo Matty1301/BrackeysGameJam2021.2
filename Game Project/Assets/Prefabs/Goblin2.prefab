@@ -237,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 5198706590898290040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 5381788190720777593}
   - {fileID: 7540281814289600918}
@@ -270,7 +270,7 @@ MonoBehaviour:
   attackRange: 1.5
   playerIsInSightRange: 0
   playerIsInAttackRange: 0
-  maxHealth: 100
+  maxHealth: 75
   health: 100
   ragdollPrefab: {fileID: 2846963339279567469, guid: cbf602d6c4e52e448845476e44b53f56, type: 3}
   walkPointRange: 6

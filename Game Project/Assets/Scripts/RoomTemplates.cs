@@ -15,7 +15,6 @@ public class RoomTemplates : MonoBehaviour
     public float waitTime;
     private bool spawnedBoss;
     public GameObject bossPrefab;
-    public GameObject enemyPrefab;
     public GameObject Win;
     private GameObject Boss;
 
@@ -28,7 +27,12 @@ public class RoomTemplates : MonoBehaviour
 
     private void Update()
     {
-        if(waitTime <= 0 && spawnedBoss == false)
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
+        }
+
+        else if (waitTime <= 0 && spawnedBoss == false)
         {
             FindObjectOfType<NavMeshBuilder>().BuildNavMesh();
 
@@ -46,11 +50,7 @@ public class RoomTemplates : MonoBehaviour
             }
         }
 
-        else if (waitTime > 0)
-        {
-            waitTime -= Time.deltaTime;
-        }
-        if (spawnedBoss)
+        else if (spawnedBoss)
         {
             if (!Boss.activeInHierarchy)
             {

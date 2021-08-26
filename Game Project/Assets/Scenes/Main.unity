@@ -249,7 +249,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275793784}
-  m_LocalRotation: {x: 0.36670473, y: -0.000000022638364, z: 0.000000008923211, w: 0.93033737}
+  m_LocalRotation: {x: 0.36670473, y: 0.000000022638364, z: -0.000000008923211, w: 0.93033737}
   m_LocalPosition: {x: 0, y: 7, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -523,6 +523,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5198706590898290040, guid: 9667689ccf5cd6548b0e58567271e072, type: 3}
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: closedRoom
+      value: 
+      objectReference: {fileID: 3311848102891876635, guid: 0d41c29a460d812428816f14efdb607d, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 5198706590898290040, guid: 98050cf7ea64ace4eafd9bac16f05934, type: 3}
@@ -743,7 +747,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -777,7 +781,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863163888}
-  m_LocalRotation: {x: 0.36670473, y: -0.000000022638364, z: 0.000000008923211, w: 0.93033737}
+  m_LocalRotation: {x: 0.36670473, y: 0.000000022638364, z: -0.000000008923211, w: 0.93033737}
   m_LocalPosition: {x: 0, y: 7, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2020,6 +2024,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4880470732597731515, guid: 4a05937cd1ab8a346a9df763242636f9, type: 3}
+      propertyPath: Walkable.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 8127651743485259272, guid: 4a05937cd1ab8a346a9df763242636f9, type: 3}
       propertyPath: m_ObstacleAvoidanceType
       value: 4
@@ -2055,6 +2063,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2166561633120571573, guid: a8bd7a5108709194da2fea54ddbf5733, type: 3}
+      propertyPath: roomTemplate
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100777851803806188, guid: a8bd7a5108709194da2fea54ddbf5733, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3311848102891876635, guid: a8bd7a5108709194da2fea54ddbf5733, type: 3}
       propertyPath: m_Name
       value: MainRoom 1
@@ -2113,6 +2129,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3921891088130668566, guid: a8bd7a5108709194da2fea54ddbf5733, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417512978975297272, guid: a8bd7a5108709194da2fea54ddbf5733, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2640,7 +2660,6 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 3989174104490040606, guid: 2d5418ab0e0b90e42baa489ab193ba5e, type: 3}
   - {fileID: 5198706590898290040, guid: 98050cf7ea64ace4eafd9bac16f05934, type: 3}
-  - {fileID: 6083340392940751456, guid: 71c2061dc9e9b6f4e9a5c9c2107f19cc, type: 3}
 --- !u!4 &1929807902
 Transform:
   m_ObjectHideFlags: 0
