@@ -105,7 +105,7 @@ public class RoomScript : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(2, 4); i++)
         {
-            Instantiate(Collectables[Random.Range(0, Collectables.Count - 1)], new Vector3(Random.Range(-11, 11) + transform.position.x, 0.5f, Random.Range(-11, 11) + transform.position.z), Quaternion.identity);
+            Instantiate(Collectables[Random.Range(0, Collectables.Count - 1)], new Vector3(Random.Range(-11, 11) + transform.position.x, transform.position.y + 0.5f, Random.Range(-11, 11) + transform.position.z), Quaternion.identity);
         }
     }
 
