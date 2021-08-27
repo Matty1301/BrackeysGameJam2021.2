@@ -8,6 +8,7 @@ public class RoomScript : MonoBehaviour
 
     public List<GameObject> Enemies;
     public List<GameObject> Doors;
+    public bool doorsOpen;
     public List<GameObject> Collectables;
     private ObjectPooler objectPooler;
 
@@ -21,9 +22,17 @@ public class RoomScript : MonoBehaviour
         Collectables = roomTemplate.Collectables;
         objectPooler = FindObjectOfType<ObjectPooler>();
 
-        spawnCollectables();
-
         openDoors();
+
+        Invoke("EnableDoorAudio", 2);
+    }
+
+    private void EnableDoorAudio()
+    {
+        foreach (GameObject door in Doors)
+        {
+            door.GetComponent<AudioSource>().enabled = true;
+        }
     }
 
     void Update()
@@ -36,7 +45,7 @@ public class RoomScript : MonoBehaviour
 
         EnemyNum = Enemies.Count;
 
-        if(EnemyNum == 0 && spawnedEnemies)
+        if(EnemyNum == 0 && spawnedEnemies && !doorsOpen)
         {
             openDoors();
         }
@@ -88,6 +97,8 @@ public class RoomScript : MonoBehaviour
         }
 
         spawnedEnemies = true;
+
+        spawnCollectables();
     }
 
     public void spawnCollectables()
@@ -109,7 +120,7 @@ public class RoomScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && EnemyNum > 0 && doorsOpen)
         {
             closeDoors();
         }
@@ -131,15 +142,21 @@ public class RoomScript : MonoBehaviour
     {
         for (int i = 0; i < Doors.Count; i++)
         {
-            Doors[i].SetActive(true);
+            Animation animation = Doors[i].GetComponent<Animation>();
+            animation.clip = animation.GetClip("DoorClosing");
+            animation.Play();
         }
+        doorsOpen = false;
     }
 
     public void openDoors()
     {
         for (int i = 0; i < Doors.Count; i++)
         {
-            Doors[i].SetActive(false);
+            Animation animation = Doors[i].GetComponent<Animation>();
+            animation.clip = animation.GetClip("DoorOpening");
+            animation.Play();
         }
+        doorsOpen = true;
     }
 }

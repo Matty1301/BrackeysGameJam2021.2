@@ -99,6 +99,8 @@ MonoBehaviour:
   roomTemplate: {fileID: 0}
   Enemies: []
   Doors: []
+  doorsOpen: 0
+  Collectables: []
   EnemyNum: 0
 --- !u!114 &837217703
 MonoBehaviour:
@@ -186,6 +188,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3276807066667934163, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974535364749033187, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -348,6 +354,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6974535364749033187, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
 --- !u!1 &4384128294117567377 stripped
@@ -506,6 +516,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3276807066667934163, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974535364749033187, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -876,6 +890,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3276807066667934163, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974535364749033187, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
