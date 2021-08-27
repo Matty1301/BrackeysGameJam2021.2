@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - heals
   - Jewel
+  - MagicA
   layers:
   - Default
   - TransparentFX
