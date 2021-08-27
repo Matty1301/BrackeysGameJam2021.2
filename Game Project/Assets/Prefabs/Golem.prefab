@@ -5037,6 +5037,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  timeBeforeRegisterHits: 1.33
   timeBetweenAttacks: 2
   alreadyAttacked: 0
   attackPoint: {fileID: 8425583574776571534}

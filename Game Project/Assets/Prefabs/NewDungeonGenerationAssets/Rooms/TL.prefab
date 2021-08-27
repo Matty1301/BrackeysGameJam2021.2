@@ -98,6 +98,9 @@ MonoBehaviour:
   Doors:
   - {fileID: 531329049096160446}
   - {fileID: 911928488813487724}
+  doorsOpen: 0
+  Collectables: []
+  EnemyNum: 0
 --- !u!65 &396271886056129958
 BoxCollider:
   m_ObjectHideFlags: 0
