@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rigidbody;
     private Animator animator;
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
 
     [SerializeField] private float timeBetweenAttacks;
     private bool alreadyAttacked;

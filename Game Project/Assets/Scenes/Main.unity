@@ -454,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 3311848102891876635, guid: b509251f6a820204bb4a281781a17a86, type: 3}
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: Collectables.Array.size
-      value: 28
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: leftRooms.Array.data[2]
@@ -596,6 +596,74 @@ PrefabInstance:
       propertyPath: Collectables.Array.data[27]
       value: 
       objectReference: {fileID: 142096, guid: 9b5dd72ec43562d44a2cb6f5de624486, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[28]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[29]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[30]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[31]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[32]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[33]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[34]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[35]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[36]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[37]
+      value: 
+      objectReference: {fileID: 132666, guid: ba39ae34c46b0ac46a3e8c1de0fc4d49, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[38]
+      value: 
+      objectReference: {fileID: 136120, guid: ffc6869ab4137a74d89484a41f685f9d, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[39]
+      value: 
+      objectReference: {fileID: 136120, guid: ffc6869ab4137a74d89484a41f685f9d, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[40]
+      value: 
+      objectReference: {fileID: 136120, guid: ffc6869ab4137a74d89484a41f685f9d, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[41]
+      value: 
+      objectReference: {fileID: 136120, guid: ffc6869ab4137a74d89484a41f685f9d, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[42]
+      value: 
+      objectReference: {fileID: 136120, guid: ffc6869ab4137a74d89484a41f685f9d, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[43]
+      value: 
+      objectReference: {fileID: 130514, guid: 3bb5571f612e6d14d82b7a56913e82af, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: Collectables.Array.data[44]
+      value: 
+      objectReference: {fileID: 130514, guid: 3bb5571f612e6d14d82b7a56913e82af, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
 --- !u!1 &863163888

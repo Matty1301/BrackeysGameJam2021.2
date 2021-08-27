@@ -130,3 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JewelValue: 10
+  SpeedValue: 0
+  jewel: 1
+  speedBoost: 0
