@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour
 
     protected Vector3 startPos;
 
+    [SerializeField] private float timeBeforeRegisterHits;
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
     public Transform attackPoint;
@@ -59,9 +60,10 @@ public class CharacterController : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            animator.ResetTrigger("Hit");
             animator.SetTrigger("Attack");
             alreadyAttacked = true;
-            Invoke("RegisterHits", 0.8f);
+            Invoke("RegisterHits", timeBeforeRegisterHits);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }

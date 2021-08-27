@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1815
   m_IgnoreTag: 
   m_TransparentLayers:
     serializedVersion: 2
@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: Lose
       value: 
       objectReference: {fileID: 1075215681}
+    - target: {fileID: 1533430176, guid: 3705d84e4bbe667489e9bbdd94ae0d9c, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4765537008891960043, guid: 3705d84e4bbe667489e9bbdd94ae0d9c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -442,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: bottomRooms.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: topRooms.Array.data[2]
@@ -475,7 +479,7 @@ PrefabInstance:
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: bottomRooms.Array.data[1]
       value: 
-      objectReference: {fileID: 3311848102891876635, guid: 5f37c9827447221419a678de67ff366c, type: 3}
+      objectReference: {fileID: 3311848102891876635, guid: 2a9e5f7c66fb28e4ea6649ff0a8b6169, type: 3}
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: bottomRooms.Array.data[2]
       value: 
@@ -484,6 +488,14 @@ PrefabInstance:
       propertyPath: bottomRooms.Array.data[3]
       value: 
       objectReference: {fileID: 3311848102891876635, guid: 1ba1497fd3bf58f479da163a218412a0, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: bottomRooms.Array.data[4]
+      value: 
+      objectReference: {fileID: 3311848102891876635, guid: 12509f31a15f0224f95295fd4a3e070d, type: 3}
+    - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
+      propertyPath: bottomRooms.Array.data[5]
+      value: 
+      objectReference: {fileID: 3311848102891876635, guid: be66d0d647a33bd4fa58fe40a2cce0bf, type: 3}
     - target: {fileID: 5301081754220030579, guid: 07529c985395a804cbac5424f4dd8fcd, type: 3}
       propertyPath: Collectables.Array.data[0]
       value: 

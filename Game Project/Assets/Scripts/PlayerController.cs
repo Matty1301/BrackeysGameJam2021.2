@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float timeBetweenAttacks;
     private bool alreadyAttacked;
     public Transform attackPoint;
-    private float attackVolume = 1;
+    private float attackVolume = 1.5f;
     private Collider[] targets;
     public GameObject Win, Lose;
 
@@ -38,8 +38,9 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * speed;
-        animator.SetFloat("Speed", rigidbody.velocity.sqrMagnitude);
+        rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rigidbody.velocity.y, Input.GetAxisRaw("Vertical") * speed);
+        Vector3 xzvelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+        animator.SetFloat("Speed", xzvelocity.sqrMagnitude);
     }
 
     private void Rotate()
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
         {
             alreadyAttacked = true;
+            animator.ResetTrigger("Hit");
             animator.SetTrigger("Attack" + (Random.Range(1, 6)));
             Invoke("RegisterHits", 0.5f);
             Invoke("ResetAttack", timeBetweenAttacks);

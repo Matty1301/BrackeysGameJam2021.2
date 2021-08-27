@@ -102,6 +102,8 @@ MonoBehaviour:
   - {fileID: 5443095390588415343}
   - {fileID: 4384128294117567377}
   - {fileID: 3277745895075290089}
+  doorsOpen: 0
+  Collectables: []
   EnemyNum: 0
 --- !u!65 &2485055565197678370
 BoxCollider:
