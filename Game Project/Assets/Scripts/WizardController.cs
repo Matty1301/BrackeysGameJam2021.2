@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class WizardController : MonoBehaviour
 {
     private Rigidbody rigidbody;
-    private Animator animator;
     [SerializeField] public float speed;
 
-    [SerializeField] public float timeBetweenAttacks;
+    [SerializeField] private float timeBetweenAttacks;
     private bool alreadyAttacked;
     public Transform attackPoint;
     private float attackVolume = 1.5f;
     private Collider[] targets;
+    public GameObject PrefabFireBall;
+    private Rigidbody FireBallRB;
     public GameObject Win, Lose;
 
-    [SerializeField] public int weaponDamage;
+    [SerializeField] private int weaponDamage;
 
     public int maxHealth;
     [HideInInspector] public int health;
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
         health = maxHealth;
     }
 
@@ -40,15 +40,13 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rigidbody.velocity.y, Input.GetAxisRaw("Vertical") * speed);
         Vector3 xzvelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
-        animator.SetFloat("Speed", xzvelocity.sqrMagnitude);
     }
 
     private void Rotate()
     {
         if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
-            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
-                Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
+            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
             transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
         }
         else
@@ -60,24 +58,20 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
         {
             alreadyAttacked = true;
-            animator.ResetTrigger("Hit");
-            animator.SetTrigger("Attack" + (Random.Range(1, 6)));
-            Invoke("RegisterHits", 0.5f);
+            Invoke("ThrowBall", 0.3f);
             Invoke("ResetAttack", timeBetweenAttacks);
         }
     }
 
-    public void RegisterHits()
+    public void ThrowBall()
     {
-        if (gameObject.activeInHierarchy)
-        {
-            targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Enemy"));
-            foreach (Collider target in targets)
-            {
-                if (target.GetComponent<CharacterController>() != null)
-                    target.GetComponent<CharacterController>().TakeDamage(weaponDamage);
-            }
-        }
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
+
+
+        FireBallRB = Instantiate(PrefabFireBall, attackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+
+        FireBallRB.AddForce(attackPoint.forward * 32f, ForceMode.Impulse);
+
     }
 
     private void ResetAttack()
@@ -87,7 +81,6 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        animator.SetTrigger("Hit");
 
         health -= damage;
 
@@ -114,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "heals")
+        if (other.gameObject.tag == "heals")
         {
             Heals(30);
             other.gameObject.SetActive(false);

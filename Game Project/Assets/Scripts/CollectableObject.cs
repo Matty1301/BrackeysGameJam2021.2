@@ -32,7 +32,7 @@ public class CollectableObject : MonoBehaviour
             }
             else if (speedBoost)
             {
-                playerController.speed = initialSpeed * 2;
+                playerController.speed = playerController.speed * 2;
                 StartCoroutine(resetSpeed(SpeedValue));
             }
         }
@@ -44,7 +44,7 @@ public class CollectableObject : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
-        playerController.speed = initialSpeed;
+        playerController.speed = playerController.speed / 2;
 
         gameObject.SetActive(false);
     }
