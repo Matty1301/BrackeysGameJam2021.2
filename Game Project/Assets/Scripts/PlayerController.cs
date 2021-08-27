@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Rigidbody rigidbody;
+    private Animator animator;
+    [SerializeField] private float speed;
+
+    [SerializeField] private float timeBetweenAttacks;
+    private bool alreadyAttacked;
     public Transform attackPoint;
     private float attackVolume = 1;
     private Collider[] targets;
     public GameObject Win, Lose;
 
+    [SerializeField] private int weaponDamage;
 
     public int maxHealth;
     [HideInInspector] public int health;
@@ -17,17 +24,44 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<RPGCharacterAnimsFREE.RPGCharacterInputController>().DrawWeapon();
+        rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         health = maxHealth;
     }
 
     private void Update()
+    {
+        Move();
+        Rotate();
+        Attack();
+    }
+
+    private void Move()
+    {
+        rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * speed;
+        animator.SetFloat("Speed", rigidbody.velocity.sqrMagnitude);
+    }
+
+    private void Rotate()
     {
         if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
             Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
                 Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
             transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
+        }
+        else
+            transform.LookAt(transform.position + rigidbody.velocity);
+    }
+
+    private void Attack()
+    {
+        if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
+        {
+            alreadyAttacked = true;
+            animator.SetTrigger("Attack" + (Random.Range(1, 6)));
+            Invoke("RegisterHits", 0.5f);
+            Invoke("ResetAttack", timeBetweenAttacks);
         }
     }
 
@@ -39,13 +73,20 @@ public class PlayerController : MonoBehaviour
             foreach (Collider target in targets)
             {
                 if (target.GetComponent<CharacterController>() != null)
-                    target.GetComponent<CharacterController>().TakeDamage(25);
+                    target.GetComponent<CharacterController>().TakeDamage(weaponDamage);
             }
         }
     }
 
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
     public void TakeDamage(int damage)
     {
+        animator.SetTrigger("Hit");
+
         health -= damage;
 
         if (health <= 0)
@@ -73,7 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.tag == "heals")
         {
-            Heals(15);
+            Heals(30);
             other.gameObject.SetActive(false);
         }
     }
