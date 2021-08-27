@@ -281,10 +281,11 @@ MonoBehaviour:
   roomTemplate: {fileID: 0}
   Enemies: []
   Doors:
-  - {fileID: 0}
+  - {fileID: 9139371371314166650}
   doorsOpen: 0
   Collectables: []
   EnemyNum: 0
+  setWeapon: {fileID: 0}
 --- !u!65 &4462921286925216369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6089,6 +6090,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+--- !u!1 &9139371371314166650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3276807066667934163, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+  m_PrefabInstance: {fileID: 6029228620989684393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6029228620989564525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 449732, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
