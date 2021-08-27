@@ -13,9 +13,14 @@ public class RoomSpawner : MonoBehaviour
 
     private void Awake()
     {
-        Destroy(gameObject, waitTime);
+        Invoke("Disable", waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke("Spawn", 0.1f);
+    }
+
+    private void Disable()
+    {
+        gameObject.SetActive(false);
     }
 
 
@@ -23,34 +28,10 @@ public class RoomSpawner : MonoBehaviour
     {
         if(spawned == false)
         {
-
-            if (openingDirection == 1)
-            {
-                //spawn a room with a BOTTOM door
-                rand = Random.Range(0, templates.bottomRooms.Length);
-                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation).gameObject.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
-            }
-
-            else if (openingDirection == 2)
-            {
-                //spawn a room with a TOP door
-                rand = Random.Range(0, templates.topRooms.Length);
-                Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation).gameObject.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
-            }
-
-            else if (openingDirection == 3)
-            {
-                //spawn a room with a LEFT door
-                rand = Random.Range(0, templates.leftRooms.Length);
-                Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation).gameObject.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
-            }
-
-            else if (openingDirection == 4)
-            {
-                //spawn a room with a RIGHT door
-                rand = Random.Range(0, templates.rightRooms.Length);
-                Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation).gameObject.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
-            }
+            //spawn a room with the door facing the previous room
+            rand = Random.Range(0, templates.allRooms.Length);
+            Instantiate(templates.allRooms[rand], transform.position, transform.rotation)
+                .gameObject.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
 
             spawned = true;
         }

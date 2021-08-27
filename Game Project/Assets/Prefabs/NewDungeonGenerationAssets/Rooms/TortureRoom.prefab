@@ -281,7 +281,7 @@ MonoBehaviour:
   roomTemplate: {fileID: 0}
   Enemies: []
   Doors:
-  - {fileID: 0}
+  - {fileID: 9139371371314166650}
   doorsOpen: 0
   Collectables: []
   EnemyNum: 0
@@ -335,7 +335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1446683073288765970, guid: ee6f20a6d22282e4fa26e8061f021578, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1446683073288765970, guid: ee6f20a6d22282e4fa26e8061f021578, type: 3}
       propertyPath: m_LocalRotation.x
@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1446683073288765970, guid: ee6f20a6d22282e4fa26e8061f021578, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1446683073288765970, guid: ee6f20a6d22282e4fa26e8061f021578, type: 3}
       propertyPath: m_LocalRotation.z
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1446683073288765970, guid: ee6f20a6d22282e4fa26e8061f021578, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1446683073288765970, guid: ee6f20a6d22282e4fa26e8061f021578, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6089,6 +6089,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+--- !u!1 &9139371371314166650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3276807066667934163, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
+  m_PrefabInstance: {fileID: 6029228620989684393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6029228620989564525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 449732, guid: b12f29180236ca64ab5aa5c5a3b025da, type: 3}
