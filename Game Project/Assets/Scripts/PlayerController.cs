@@ -32,9 +32,12 @@ public class PlayerController : MonoBehaviour
 
     protected void Update()
     {
-        Move();
-        Rotate();
-        Attack();
+        if (Time.timeScale != 0)
+        {
+            Move();
+            Rotate();
+            Attack();
+        }
     }
 
     protected void Move()
@@ -58,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
+        if ((Input.GetButtonDown("AttackL") || Input.GetButtonDown("AttackR")) && !alreadyAttacked)
         {
             alreadyAttacked = true;
             animator.ResetTrigger("Hit");

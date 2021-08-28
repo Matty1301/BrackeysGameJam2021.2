@@ -59,7 +59,7 @@ public class WizardController : MonoBehaviour
 
     private void Attack()
     {
-        if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
+        if ((Input.GetButtonDown("AttackL") || Input.GetButtonDown("AttackR")) && !alreadyAttacked)
         {
             alreadyAttacked = true;
             Invoke("ThrowBall", 0.3f);
