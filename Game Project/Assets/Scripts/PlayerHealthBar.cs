@@ -5,24 +5,21 @@ using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    private PlayerController playerController;
+    private RectTransform rectTransform;
+    private Controller playerController;
     private Slider healthBarFill;
 
     private void Awake()
     {
+        playerController = FindObjectOfType<Controller>();
+        rectTransform = GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(playerController.maxHealth, 20);
         healthBarFill = GetComponent<Slider>();
-    }
-
-    void Start()
-    {
         healthBarFill.value = 1;
     }
 
     void Update()
     {
-        if (playerController == null)
-            playerController = FindObjectOfType<PlayerController>();
-
         if (playerController != null)
         {
             healthBarFill.value = (float)playerController.health / playerController.maxHealth;

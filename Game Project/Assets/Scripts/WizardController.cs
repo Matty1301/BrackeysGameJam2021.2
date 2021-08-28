@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardController : MonoBehaviour
+public class WizardController : Controller
 {
     private Rigidbody rigidbody;
-    protected Animator animator;
-    [SerializeField] public float speed;
+    //protected Animator animator;
+    protected AudioSource audioSource;
+    //public float speed;
+
+    [SerializeField] protected AudioClip[] fireballAttackSounds, eatingMeatSounds;
 
     private bool attackQueued = false;
     [SerializeField] private float timeBetweenAttacks;
     private bool alreadyAttacked;
-    public Transform attackPoint;
+    //public Transform attackPoint;
     private float attackVolume = 1.5f;
     private Collider[] targets;
     public GameObject PrefabFireBall;
     private Rigidbody FireBallRB;
-    public GameObject Win, Lose;
+    //public GameObject Win, Lose;
 
     [SerializeField] private int weaponDamage;
 
-    public int maxHealth;
-    [HideInInspector] public int health;
+    //public int maxHealth;
+    //[HideInInspector] public int health;
 
-    [SerializeField] GameObject ragdollPrefab;
+    //[SerializeField] GameObject ragdollPrefab;
 
     [SerializeField] Camera TopDownCamera;
     public float AttackSpread;
@@ -33,6 +36,7 @@ public class WizardController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
         health = maxHealth;
     }
 
@@ -71,6 +75,7 @@ public class WizardController : MonoBehaviour
         if (alreadyAttacked == false)
         {
             alreadyAttacked = true;
+            Invoke("PlayAttackSound", 0.1f);
             animator.ResetTrigger("Hit");
             animator.SetTrigger("Attack");
             Invoke("ThrowBall", 0.3f);
@@ -121,6 +126,7 @@ public class WizardController : MonoBehaviour
         }
     }
 
+    /*
     public void TakeDamage(int damage)
     {
         animator.SetTrigger("Hit");
@@ -140,6 +146,7 @@ public class WizardController : MonoBehaviour
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }
+    */
 
     private void Heals(int healthA)
     {
@@ -150,10 +157,16 @@ public class WizardController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "heals")
+        if (other.gameObject.tag == "heals" && health < maxHealth)
         {
+            audioSource.PlayOneShot(eatingMeatSounds[Random.Range(0, eatingMeatSounds.Length)]);
             Heals(30);
             other.gameObject.SetActive(false);
         }
+    }
+
+    protected void PlayAttackSound()
+    {
+        audioSource.PlayOneShot(fireballAttackSounds[Random.Range(0, fireballAttackSounds.Length)]);
     }
 }

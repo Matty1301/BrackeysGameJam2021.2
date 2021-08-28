@@ -2,32 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Controller
 {
     protected Rigidbody rigidbody;
-    protected Animator animator;
+    //protected Animator animator;
     protected AudioSource audioSource;
-    public float speed;
+    //public float speed;
 
     [SerializeField] protected AudioClip[] swordAttackSounds, maceAttackSounds, axeAttackSounds, eatingMeatSounds;
 
-    [HideInInspector] public int currentWeapon;
+    //[HideInInspector] public int currentWeapon;
 
     private bool attackQueued = false;
     [SerializeField] protected float timeBeforeRegisterHits;
     [SerializeField] public float timeBetweenAttacks;
     protected bool alreadyAttacked;
-    public Transform attackPoint;
+    //public Transform attackPoint;
     protected float attackVolume = 1.5f;
     protected Collider[] targets;
-    public GameObject Win, Lose;
+    //public GameObject Win, Lose;
 
     [SerializeField] public int weaponDamage;
 
-    public int maxHealth;
-    [HideInInspector] public int health;
+    //public int maxHealth;
+    //[HideInInspector] public int health;
 
-    [SerializeField] protected GameObject ragdollPrefab;
+    //[SerializeField] protected GameObject ragdollPrefab;
 
     protected void Start()
     {
@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /*
     public void TakeDamage(int damage)
     {
         animator.SetTrigger("Hit");
@@ -126,6 +127,7 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }
+    */
 
     protected void Heals(int healthA)
     {

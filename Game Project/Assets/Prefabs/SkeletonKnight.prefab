@@ -4954,7 +4954,7 @@ MonoBehaviour:
   maxHealth: 50
   health: 100
   ragdollPrefab: {fileID: 6258805194427716039, guid: 8ccd115e0cfb4be4dbadc8c98121e682, type: 3}
-  walkPointRange: 6
+  walkPointRange: 5
 --- !u!54 &645938546893953848
 Rigidbody:
   m_ObjectHideFlags: 0

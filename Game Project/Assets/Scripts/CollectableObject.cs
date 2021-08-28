@@ -16,12 +16,12 @@ public class CollectableObject : MonoBehaviour
     public bool jewel;
     public bool speedBoost;
 
-    private PlayerController playerController;
+    private Controller playerController;
 
     private void Start()
     {
         audioSource = GameObject.Find("SoundEffectsSource").GetComponent<AudioSource>();
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>();
         initialSpeed = playerController.speed;
     }
 
@@ -51,7 +51,9 @@ public class CollectableObject : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
-        playerController.speed = playerController.GetComponent<SetWeapon>().speed[playerController.currentWeapon];
+        if (playerController.GetComponent<SetWeapon>())
+            playerController.speed = playerController.GetComponent<SetWeapon>().speed[playerController.currentWeapon];
+        else playerController.speed = initialSpeed;
 
         gameObject.SetActive(false);
     }
