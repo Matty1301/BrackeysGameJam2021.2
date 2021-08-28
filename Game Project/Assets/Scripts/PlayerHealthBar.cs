@@ -10,7 +10,6 @@ public class PlayerHealthBar : MonoBehaviour
 
     private void Awake()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         healthBarFill = GetComponent<Slider>();
     }
 
@@ -21,6 +20,9 @@ public class PlayerHealthBar : MonoBehaviour
 
     void Update()
     {
+        if (playerController == null)
+            playerController = FindObjectOfType<PlayerController>();
+
         if (playerController != null)
         {
             healthBarFill.value = (float)playerController.health / playerController.maxHealth;
