@@ -101,8 +101,6 @@ public class RoomScript : MonoBehaviour
         }
 
         spawnedEnemies = true;
-
-        spawnCollectables();
     }
 
     public void spawnCollectables()
@@ -175,6 +173,6 @@ public class RoomScript : MonoBehaviour
         int RandomWeapon;
         RandomWeapon = Random.Range(0, setWeapon.Weapons.Count);
         Debug.Log("Weapon swapped : " + RandomWeapon.ToString());
-        setWeapon.currentWeapon = RandomWeapon;
+        setWeapon.ChangeWeapon(RandomWeapon);
     }
 }

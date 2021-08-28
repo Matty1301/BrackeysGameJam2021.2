@@ -13,33 +13,36 @@ public class SetWeapon : MonoBehaviour
 
     public int currentWeapon;
 
-    void Start()
-    {
-    }
-
     void Update()
     {
         if (currentWeapon > Weapons.Count - 1)
+        {
             currentWeapon = Weapons.Count - 1;
+            playerController.currentWeapon = currentWeapon;
+        }
 
         if (currentWeapon < 0)
+        {
             currentWeapon = 0;
-
-        ChangeWeapon(currentWeapon);
-
-        playerController.speed = speed[currentWeapon];
-        playerController.timeBetweenAttacks = timeBetweenAttacks[currentWeapon];
-        playerController.weaponDamage = Damage[currentWeapon];
+            playerController.currentWeapon = currentWeapon;
+        }
     }
 
     public void setWeaponIndex(int WeaponIndex)
     {
         currentWeapon = WeaponIndex;
+        playerController.currentWeapon = currentWeapon;
     }
 
     public void ChangeWeapon(int WeaponIndex)
     {
-            for (int i = 0; i < Weapons.Count; i++)
+        setWeaponIndex(WeaponIndex);
+
+        playerController.speed = speed[currentWeapon];
+        playerController.timeBetweenAttacks = timeBetweenAttacks[currentWeapon];
+        playerController.weaponDamage = Damage[currentWeapon];
+
+        for (int i = 0; i < Weapons.Count; i++)
             {
                 if(WeaponIndex != i)
                 {

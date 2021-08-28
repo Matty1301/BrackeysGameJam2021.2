@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CollectableObject : MonoBehaviour
 {
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip[] pickupSounds;
 
     public int JewelValue = 0;
     public float SpeedValue = 0;
@@ -17,6 +20,7 @@ public class CollectableObject : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GameObject.Find("SoundEffectsSource").GetComponent<AudioSource>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         initialSpeed = playerController.speed;
     }
@@ -27,11 +31,14 @@ public class CollectableObject : MonoBehaviour
         {
             if (jewel)
             {
+                PlayPickupSound();
                 PublicVariables.Jewels += JewelValue;
                 gameObject.SetActive(false);
             }
             else if (speedBoost)
             {
+                speedBoost = false;
+                PlayPickupSound();
                 playerController.speed = playerController.speed * 2;
                 StartCoroutine(resetSpeed(SpeedValue));
             }
@@ -44,8 +51,13 @@ public class CollectableObject : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
-        playerController.speed = playerController.speed / 2;
+        playerController.speed = playerController.GetComponent<SetWeapon>().speed[playerController.currentWeapon];
 
         gameObject.SetActive(false);
+    }
+
+    private void PlayPickupSound()
+    {
+        audioSource.PlayOneShot(pickupSounds[Random.Range(0, pickupSounds.Length)]);
     }
 }
