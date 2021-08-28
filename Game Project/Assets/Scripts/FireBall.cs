@@ -27,5 +27,10 @@ public class FireBall : MonoBehaviour
         {
             other.GetComponent<EnemyAI>().TakeDamage(damage);
         }
+
+        if (other.gameObject.tag == "Boss")
+        {
+            other.GetComponent<BossAI>().TakeDamage(damage);
+        }
     }
 }

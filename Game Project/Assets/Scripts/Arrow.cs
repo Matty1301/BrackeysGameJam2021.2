@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int damage;
+    public float torque;
+    public Rigidbody rb;
+
+    private bool DidHit;
+
+    public void Fly(Vector3 force)
     {
-        
+        rb.isKinematic = false;
+        rb.AddForce(force, ForceMode.Impulse);
+        rb.AddTorque(transform.right * torque);
+        transform.SetParent(null);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (DidHit) return;
+        DidHit = true;
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+        }
+
+        if (other.gameObject.tag == "Boss")
+        {
+            other.gameObject.GetComponent<BossAI>().TakeDamage(damage);
+        }
+
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.isKinematic = true;
+        transform.SetParent(other.transform);
     }
 }
