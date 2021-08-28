@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: -2550311024624188340}
   - component: {fileID: 2137428446600561613}
   - component: {fileID: 637921911320400898}
+  - component: {fileID: 4907230112561236856}
   m_Layer: 0
   m_Name: TB
-  m_TagString: Rooms
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +102,7 @@ MonoBehaviour:
   doorsOpen: 0
   Collectables: []
   EnemyNum: 0
+  setWeapon: {fileID: 0}
 --- !u!65 &637921911320400898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,8 +114,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.5, y: 8, z: 18}
+  m_Size: {x: 20, y: 8, z: 20}
   m_Center: {x: 0, y: 4, z: 0}
+--- !u!65 &4907230112561236856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311848102891876635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8042916465867406
 PrefabInstance:
   m_ObjectHideFlags: 0
