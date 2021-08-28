@@ -23,10 +23,6 @@ public class WizardController : MonoBehaviour
 
     [SerializeField] GameObject ragdollPrefab;
 
-    [SerializeField] Camera TopDownCamera;
-    public float AttackSpread;
-    public float AttackForce;
-
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -69,6 +65,8 @@ public class WizardController : MonoBehaviour
 
     public void ThrowBall()
     {
+        Debug.Log("Instanciate Ball");
+        /*Debug.Log(Input.mousePosition);
         Ray ray = TopDownCamera.ViewportPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -88,7 +86,12 @@ public class WizardController : MonoBehaviour
         currentBall.transform.forward = directionWithSpread.normalized;
 
         FireBallRB = currentBall.GetComponent<Rigidbody>();
-        FireBallRB.AddForce(directionWithSpread.normalized * AttackForce, ForceMode.Impulse);
+        FireBallRB.AddForce(directionWithSpread.normalized * AttackForce, ForceMode.Impulse);*/
+
+        Instantiate(FireBallRB.transform, attackPoint.transform.position, Quaternion.identity);
+    
+        
+    
     }
 
     private void ResetAttack()
