@@ -20,7 +20,7 @@ public class CollectableObject : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.Find("SoundEffectsSource").GetComponent<AudioSource>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         initialSpeed = playerController.speed;
     }
@@ -37,6 +37,7 @@ public class CollectableObject : MonoBehaviour
             }
             else if (speedBoost)
             {
+                Debug.Log("Double speed");
                 playerController.speed = playerController.speed * 2;
                 StartCoroutine(resetSpeed(SpeedValue));
             }
@@ -49,7 +50,7 @@ public class CollectableObject : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
-        playerController.speed = playerController.speed / 2;
+        playerController.speed = playerController.GetComponent<SetWeapon>().speed[playerController.currentWeapon];
 
         gameObject.SetActive(false);
     }

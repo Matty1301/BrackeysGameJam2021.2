@@ -36,7 +36,7 @@ public class CharacterController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.Find("SoundEffectsSource").GetComponent<AudioSource>();
         startPos = transform.position;
         health = maxHealth;
     }
