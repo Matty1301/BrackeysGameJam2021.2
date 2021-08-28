@@ -7,6 +7,10 @@ public class CharacterController : MonoBehaviour
 {
     protected Animator animator;
     public NavMeshAgent agent;
+    protected AudioSource audioSource;
+
+    [SerializeField] protected AudioClip[] hitSounds;
+
     public Transform player;
     public LayerMask whatIsPlayer;
 
@@ -32,6 +36,7 @@ public class CharacterController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
         startPos = transform.position;
         health = maxHealth;
     }
@@ -89,6 +94,7 @@ public class CharacterController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         animator.SetTrigger("Hit");
+        audioSource.PlayOneShot(hitSounds[Random.Range(0, hitSounds.Length)]);
 
         health -= damage;
 

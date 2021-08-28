@@ -20,10 +20,16 @@ public class SetWeapon : MonoBehaviour
     void Update()
     {
         if (currentWeapon > Weapons.Count - 1)
+        {
             currentWeapon = Weapons.Count - 1;
+            playerController.currentWeapon = currentWeapon;
+        }
 
         if (currentWeapon < 0)
+        {
             currentWeapon = 0;
+            playerController.currentWeapon = currentWeapon;
+        }
 
         ChangeWeapon(currentWeapon);
 
@@ -35,6 +41,7 @@ public class SetWeapon : MonoBehaviour
     public void setWeaponIndex(int WeaponIndex)
     {
         currentWeapon = WeaponIndex;
+        playerController.currentWeapon = currentWeapon;
     }
 
     public void ChangeWeapon(int WeaponIndex)

@@ -4886,6 +4886,7 @@ GameObject:
   - component: {fileID: 645938546893953848}
   - component: {fileID: 7398963696523312653}
   - component: {fileID: 4845420857775331324}
+  - component: {fileID: -9192655692668968900}
   m_Layer: 7
   m_Name: SkeletonKnight
   m_TagString: Enemy
@@ -4923,6 +4924,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  hitSounds:
+  - {fileID: 8300000, guid: 73ebd29168e445f44a5505383ee0d1c7, type: 3}
+  - {fileID: 8300000, guid: 36ce8ebabc9450249b1911a177228dfe, type: 3}
+  - {fileID: 8300000, guid: 7040df2e6c325b7408d15087c0c42cf3, type: 3}
+  - {fileID: 8300000, guid: bbbb49952466c364490a0789f27d5726, type: 3}
+  - {fileID: 8300000, guid: 5aa6a4b4d13e64545bb0c6f652b4bebd, type: 3}
+  - {fileID: 8300000, guid: 08a36ed68923fe44b9daa018dd9fe498, type: 3}
+  - {fileID: 8300000, guid: 9c7dbeda8db57884483b0ce5a3eb4324, type: 3}
+  - {fileID: 8300000, guid: d39eba8025eb3ea40a8659a31655ed4b, type: 3}
+  - {fileID: 8300000, guid: e51c23ccb49abb94ba4ec681551ec805, type: 3}
+  - {fileID: 8300000, guid: 0ae758454a90e6c44a1f09137f480345, type: 3}
+  - {fileID: 8300000, guid: f8da26f30e9fa074fb767bd5e4332f18, type: 3}
+  - {fileID: 8300000, guid: d65831bb906e5ce438500bc5ea8b2a72, type: 3}
   player: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
@@ -4993,6 +5007,102 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!82 &-9192655692668968900
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3915185607721142794}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c884e76d3a2b1cc409946ddbcb4758b7, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5064630358151660856
 GameObject:
   m_ObjectHideFlags: 0

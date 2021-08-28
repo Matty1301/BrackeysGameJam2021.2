@@ -6,7 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     protected Rigidbody rigidbody;
     protected Animator animator;
+    protected AudioSource audioSource;
     public float speed;
+
+    [SerializeField] protected AudioClip[] swordAttackSounds, maceAttackSounds, axeAttackSounds;
+
+    [HideInInspector] public int currentWeapon;
 
     private bool attackQueued = false;
     [SerializeField] protected float timeBeforeRegisterHits;
@@ -28,7 +33,9 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
         health = maxHealth;
+        currentWeapon = GetComponent<SetWeapon>().currentWeapon;
     }
 
     protected void Update()
@@ -66,6 +73,7 @@ public class PlayerController : MonoBehaviour
         if (alreadyAttacked == false)
         {
             alreadyAttacked = true;
+            Invoke("PlayAttackSound", 0.1f);
             animator.ResetTrigger("Hit");
             animator.SetTrigger("Attack" + (Random.Range(1, 6)));
             Invoke("RegisterHits", timeBeforeRegisterHits);
@@ -133,5 +141,15 @@ public class PlayerController : MonoBehaviour
             Heals(30);
             other.gameObject.SetActive(false);
         }
+    }
+
+    protected void PlayAttackSound()
+    {
+        if (currentWeapon == 0)
+            audioSource.PlayOneShot(swordAttackSounds[Random.Range(0, swordAttackSounds.Length)]);
+        else if (currentWeapon == 1)
+            audioSource.PlayOneShot(maceAttackSounds[Random.Range(0, maceAttackSounds.Length)]);
+        else if (currentWeapon == 2)
+            audioSource.PlayOneShot(axeAttackSounds[Random.Range(0, axeAttackSounds.Length)]);
     }
 }

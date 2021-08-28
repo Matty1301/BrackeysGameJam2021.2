@@ -1396,6 +1396,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5957204784153413368, guid: 08b6d7baad4a9284a9cecda1df20d868, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ac068638a2f03843aa1798719f1eac3, type: 3}
+    - target: {fileID: 5957204784153413368, guid: 08b6d7baad4a9284a9cecda1df20d868, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: c884e76d3a2b1cc409946ddbcb4758b7, type: 2}
