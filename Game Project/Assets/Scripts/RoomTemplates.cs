@@ -44,6 +44,7 @@ public class RoomTemplates : MonoBehaviour
                 if (i == rooms.Count - 1)
                 {
                     Boss = Instantiate(bossPrefab, rooms[i].transform.position, Quaternion.identity).gameObject;
+                    rooms[i].GetComponent<RoomScript>().Enemies.Add(Boss);
                     spawnedBoss = true;
                 }
                 else

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     protected Animator animator;
     public float speed;
 
+    private bool attackQueued = false;
     [SerializeField] protected float timeBeforeRegisterHits;
     [SerializeField] public float timeBetweenAttacks;
     protected bool alreadyAttacked;
@@ -36,7 +37,8 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             Rotate();
-            Attack();
+            if (Input.GetButtonDown("AttackL") || Input.GetButtonDown("AttackR"))
+                Attack();
         }
     }
 
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        if ((Input.GetButtonDown("AttackL") || Input.GetButtonDown("AttackR")) && !alreadyAttacked)
+        if (alreadyAttacked == false)
         {
             alreadyAttacked = true;
             animator.ResetTrigger("Hit");
@@ -69,6 +71,9 @@ public class PlayerController : MonoBehaviour
             Invoke("RegisterHits", timeBeforeRegisterHits);
             Invoke("ResetAttack", timeBetweenAttacks);
         }
+
+        else if (attackQueued == false)
+            attackQueued = true;
     }
 
     public void RegisterHits()
@@ -87,6 +92,11 @@ public class PlayerController : MonoBehaviour
     protected void ResetAttack()
     {
         alreadyAttacked = false;
+        if (attackQueued == true)
+        {
+            Attack();
+            attackQueued = false;
+        }
     }
 
     public void TakeDamage(int damage)
