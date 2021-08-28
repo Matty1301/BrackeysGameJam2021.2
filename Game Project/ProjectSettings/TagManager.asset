@@ -14,6 +14,7 @@ TagManager:
   - heals
   - Jewel
   - MagicA
+  - Arrow
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - TempCast
   - Walkable
   - Wall
-  - 
+  - Arrow
   - 
   - 
   - 

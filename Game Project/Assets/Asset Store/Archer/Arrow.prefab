@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2762184656301081198}
   - component: {fileID: 8720696392680393331}
   - component: {fileID: 4076348459488457988}
+  - component: {fileID: 9058395443273451663}
   m_Layer: 0
-  m_Name: Cube.002
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,3 +96,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.0005, z: 0.0005}
   m_Center: {x: -0.00006989483, y: -0.00003725991, z: 0}
+--- !u!114 &9058395443273451663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889985523723988059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2dcfef19f2a574c94e31044b208890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
