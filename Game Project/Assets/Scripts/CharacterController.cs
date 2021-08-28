@@ -80,8 +80,8 @@ public class CharacterController : MonoBehaviour
             targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Player"));
             foreach (Collider target in targets)
             {
-                if (target.GetComponent<PlayerController>() != null)
-                    target.GetComponent<PlayerController>().TakeDamage(weaponDamage);
+                if (target.GetComponent<Controller>() != null)
+                    target.GetComponent<Controller>().TakeDamage(weaponDamage);
             }
         }
     }
@@ -109,8 +109,8 @@ public class CharacterController : MonoBehaviour
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
         Vector3 directionFromHitPoint = Vector3.zero;
-        if (FindObjectOfType<PlayerController>())
-            directionFromHitPoint = ragdoll.transform.position - FindObjectOfType<PlayerController>().attackPoint.position;
+        if (FindObjectOfType<Controller>())
+            directionFromHitPoint = ragdoll.transform.position - FindObjectOfType<Controller>().attackPoint.position;
         int forceMultiplier = 100;
         ragdoll.GetComponent<Rigidbody>().AddForce(directionFromHitPoint * forceMultiplier, ForceMode.Impulse);
     }

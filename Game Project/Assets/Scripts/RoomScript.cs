@@ -170,9 +170,11 @@ public class RoomScript : MonoBehaviour
 
     private void swapPlayerWeapon()
     {
-        int RandomWeapon;
-        RandomWeapon = Random.Range(0, setWeapon.Weapons.Count);
-        Debug.Log("Weapon swapped : " + RandomWeapon.ToString());
-        setWeapon.ChangeWeapon(RandomWeapon);
+        if (setWeapon != null)
+        {
+            int RandomWeapon = Random.Range(0, setWeapon.Weapons.Count);
+            Debug.Log("Weapon swapped : " + RandomWeapon);
+            setWeapon.ChangeWeapon(RandomWeapon);
+        }
     }
 }
