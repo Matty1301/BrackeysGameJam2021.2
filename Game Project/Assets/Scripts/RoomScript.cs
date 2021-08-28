@@ -141,6 +141,11 @@ public class RoomScript : MonoBehaviour
         {
             EnemyNum--;
         }
+
+        if (other.gameObject.tag == "Player" && !doorsOpen)
+        {
+            openDoors();
+        }
     }
 
     public void closeDoors()

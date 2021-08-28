@@ -69,6 +69,7 @@ public class WizardController : MonoBehaviour
 
     public void ThrowBall()
     {
+        /*
         Ray ray = TopDownCamera.ViewportPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -89,6 +90,11 @@ public class WizardController : MonoBehaviour
 
         FireBallRB = currentBall.GetComponent<Rigidbody>();
         FireBallRB.AddForce(directionWithSpread.normalized * AttackForce, ForceMode.Impulse);
+    */
+        
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
+        Instantiate(PrefabFireBall, attackPoint.transform.position, Quaternion.identity).transform.LookAt(new Vector3(hitInfo.point.x, attackPoint.transform.position.y, hitInfo.point.z));
+
     }
 
     private void ResetAttack()

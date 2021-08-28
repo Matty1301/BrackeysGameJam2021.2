@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3921891088130668566}
   - component: {fileID: -1189374549265287417}
   - component: {fileID: -3701776196481574419}
+  - component: {fileID: -2213701361629130243}
   m_Layer: 0
   m_Name: F
-  m_TagString: Rooms
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +63,23 @@ MonoBehaviour:
   roomTemplate: {fileID: 0}
   Enemies: []
   Doors: []
+  doorsOpen: 0
+  Collectables: []
+  EnemyNum: 0
+  setWeapon: {fileID: 0}
+--- !u!65 &-2213701361629130243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311848102891876635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 8, z: 20}
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!1001 &3635319632130908933
 PrefabInstance:
   m_ObjectHideFlags: 0
