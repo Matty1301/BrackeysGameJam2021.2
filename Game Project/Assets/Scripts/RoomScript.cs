@@ -116,9 +116,9 @@ public class RoomScript : MonoBehaviour
 
     public void disableEnemies()
     {
-        for (int i = 0; i < EnemyNum; i++)
+        foreach (GameObject enemy in Enemies)
         {
-            Enemies[i].SetActive(false);
+            enemy.SetActive(false);
         }
     }
 

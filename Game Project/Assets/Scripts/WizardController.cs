@@ -5,8 +5,10 @@ using UnityEngine;
 public class WizardController : MonoBehaviour
 {
     private Rigidbody rigidbody;
+    protected Animator animator;
     [SerializeField] public float speed;
 
+    private bool attackQueued = false;
     [SerializeField] private float timeBetweenAttacks;
     private bool alreadyAttacked;
     public Transform attackPoint;
@@ -30,27 +32,34 @@ public class WizardController : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         health = maxHealth;
     }
 
     private void Update()
     {
-        Move();
-        Rotate();
-        Attack();
+        if (Time.timeScale != 0)
+        {
+            Move();
+            Rotate();
+            if (Input.GetButtonDown("AttackL") || Input.GetButtonDown("AttackR"))
+                Attack();
+        }
     }
 
     private void Move()
     {
         rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rigidbody.velocity.y, Input.GetAxisRaw("Vertical") * speed);
         Vector3 xzvelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+        animator.SetFloat("Speed", xzvelocity.sqrMagnitude);
     }
 
     private void Rotate()
     {
         if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
-            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
+            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
+                Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
             transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
         }
         else
@@ -59,12 +68,17 @@ public class WizardController : MonoBehaviour
 
     private void Attack()
     {
-        if ((Input.GetButtonDown("AttackL") || Input.GetButtonDown("AttackR")) && !alreadyAttacked)
+        if (alreadyAttacked == false)
         {
             alreadyAttacked = true;
+            animator.ResetTrigger("Hit");
+            animator.SetTrigger("Attack");
             Invoke("ThrowBall", 0.3f);
             Invoke("ResetAttack", timeBetweenAttacks);
         }
+
+        else if (attackQueued == false)
+            attackQueued = true;
     }
 
     public void ThrowBall()
@@ -97,13 +111,19 @@ public class WizardController : MonoBehaviour
 
     }
 
-    private void ResetAttack()
+    protected void ResetAttack()
     {
         alreadyAttacked = false;
+        if (attackQueued == true)
+        {
+            Attack();
+            attackQueued = false;
+        }
     }
 
     public void TakeDamage(int damage)
     {
+        animator.SetTrigger("Hit");
 
         health -= damage;
 
