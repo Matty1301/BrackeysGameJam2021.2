@@ -13,7 +13,7 @@ public class WizardController : PlayerController
 
     protected override void Attack()
     {
-        if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
+        if ((Input.GetButtonDown("AttackL") || Input.GetButtonDown("AttackR")) && !alreadyAttacked)
         {
             alreadyAttacked = true;
             animator.ResetTrigger("Hit");
