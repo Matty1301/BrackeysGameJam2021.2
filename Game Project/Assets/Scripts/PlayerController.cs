@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rigidbody;
-    private Animator animator;
+    protected Rigidbody rigidbody;
+    protected Animator animator;
     public float speed;
 
+    [SerializeField] protected float timeBeforeRegisterHits;
     [SerializeField] public float timeBetweenAttacks;
-    private bool alreadyAttacked;
+    protected bool alreadyAttacked;
     public Transform attackPoint;
-    private float attackVolume = 1.5f;
-    private Collider[] targets;
+    protected float attackVolume = 1.5f;
+    protected Collider[] targets;
     public GameObject Win, Lose;
 
     [SerializeField] public int weaponDamage;
@@ -20,30 +21,30 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;
     [HideInInspector] public int health;
 
-    [SerializeField] GameObject ragdollPrefab;
+    [SerializeField] protected GameObject ragdollPrefab;
 
-    private void Start()
+    protected void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         health = maxHealth;
     }
 
-    private void Update()
+    protected void Update()
     {
         Move();
         Rotate();
         Attack();
     }
 
-    private void Move()
+    protected void Move()
     {
         rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rigidbody.velocity.y, Input.GetAxisRaw("Vertical") * speed);
         Vector3 xzvelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
         animator.SetFloat("Speed", xzvelocity.sqrMagnitude);
     }
 
-    private void Rotate()
+    protected void Rotate()
     {
         if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
@@ -55,14 +56,14 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(transform.position + rigidbody.velocity);
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
         {
             alreadyAttacked = true;
             animator.ResetTrigger("Hit");
             animator.SetTrigger("Attack" + (Random.Range(1, 6)));
-            Invoke("RegisterHits", 0.5f);
+            Invoke("RegisterHits", timeBeforeRegisterHits);
             Invoke("ResetAttack", timeBetweenAttacks);
         }
     }
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ResetAttack()
+    protected void ResetAttack()
     {
         alreadyAttacked = false;
     }
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Death()
+    protected void Death()
     {
         Debug.Log("Game over");
         Lose.SetActive(true);
@@ -105,14 +106,14 @@ public class PlayerController : MonoBehaviour
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }
 
-    private void Heals(int healthA)
+    protected void Heals(int healthA)
     {
         health += healthA;
         if (health > maxHealth)
             health = maxHealth;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "heals")
         {
