@@ -23,6 +23,10 @@ public class WizardController : MonoBehaviour
 
     [SerializeField] GameObject ragdollPrefab;
 
+    [SerializeField] Camera TopDownCamera;
+    public float AttackSpread;
+    public float AttackForce;
+
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -65,13 +69,26 @@ public class WizardController : MonoBehaviour
 
     public void ThrowBall()
     {
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
+        Ray ray = TopDownCamera.ViewportPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
+        Vector3 targetPoint;
+        if (Physics.Raycast(ray, out hit))
+            targetPoint = hit.point;
+        else
+            targetPoint = ray.GetPoint(75);
 
-        FireBallRB = Instantiate(PrefabFireBall, attackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
 
-        FireBallRB.AddForce(attackPoint.forward * 32f, ForceMode.Impulse);
+        float x = Random.Range(-AttackSpread, AttackSpread);
+        float y = Random.Range(-AttackSpread, AttackSpread);
 
+        Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
+        GameObject currentBall = Instantiate(PrefabFireBall, attackPoint.position, Quaternion.identity);
+        currentBall.transform.forward = directionWithSpread.normalized;
+
+        FireBallRB = currentBall.GetComponent<Rigidbody>();
+        FireBallRB.AddForce(directionWithSpread.normalized * AttackForce, ForceMode.Impulse);
     }
 
     private void ResetAttack()
