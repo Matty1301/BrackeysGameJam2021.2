@@ -29,15 +29,16 @@ public class CollectableObject : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayPickupSound();
             if (jewel)
             {
+                PlayPickupSound();
                 PublicVariables.Jewels += JewelValue;
                 gameObject.SetActive(false);
             }
             else if (speedBoost)
             {
-                Debug.Log("Double speed");
+                speedBoost = false;
+                PlayPickupSound();
                 playerController.speed = playerController.speed * 2;
                 StartCoroutine(resetSpeed(SpeedValue));
             }

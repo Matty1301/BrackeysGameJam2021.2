@@ -41,6 +41,8 @@ public class RoomTemplates : MonoBehaviour
 
             for (int i = 1; i < rooms.Count; i++)
             {
+                rooms[i].GetComponent<RoomScript>().spawnCollectables();
+
                 if (i == rooms.Count - 1)
                 {
                     Boss = Instantiate(bossPrefab, rooms[i].transform.position, Quaternion.identity).gameObject;

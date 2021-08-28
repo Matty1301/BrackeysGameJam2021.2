@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     protected AudioSource audioSource;
     public float speed;
 
-    [SerializeField] protected AudioClip[] swordAttackSounds, maceAttackSounds, axeAttackSounds;
+    [SerializeField] protected AudioClip[] swordAttackSounds, maceAttackSounds, axeAttackSounds, eatingMeatSounds;
 
     [HideInInspector] public int currentWeapon;
 
@@ -136,8 +136,9 @@ public class PlayerController : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "heals")
+        if(other.gameObject.tag == "heals" && health < maxHealth)
         {
+            audioSource.PlayOneShot(eatingMeatSounds[Random.Range(0, eatingMeatSounds.Length)]);
             Heals(30);
             other.gameObject.SetActive(false);
         }
