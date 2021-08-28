@@ -6,8 +6,9 @@ public class CollectableObject : MonoBehaviour
 {
 
     public int JewelValue = 0;
-    public int SpeedValue = 0;
+    public float SpeedValue = 0;
     private float initialSpeed;
+    public MeshRenderer MushroomMeshRenderer;
 
     public bool jewel;
     public bool speedBoost;
@@ -20,27 +21,31 @@ public class CollectableObject : MonoBehaviour
         initialSpeed = playerController.speed;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            if(jewel)
+            if (jewel)
             {
                 PublicVariables.Jewels += JewelValue;
                 gameObject.SetActive(false);
             }
-            else if(speedBoost)
+            else if (speedBoost)
             {
-                playerController.speed = initialSpeed * 2;
-                Invoke("resetSpeed()", SpeedValue);
+                playerController.speed = playerController.speed * 2;
+                StartCoroutine(resetSpeed(SpeedValue));
             }
         }
     }
 
-    public void resetSpeed()
+    private IEnumerator resetSpeed(float delay)
     {
-        playerController.speed = initialSpeed;
-        Debug.Log("Reset!!");
+        MushroomMeshRenderer.enabled = false;
+
+        yield return new WaitForSeconds(delay);
+
+        playerController.speed = playerController.speed / 2;
+
         gameObject.SetActive(false);
     }
 }

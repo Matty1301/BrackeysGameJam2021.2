@@ -8,14 +8,14 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     public float speed;
 
-    [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] public float timeBetweenAttacks;
     private bool alreadyAttacked;
     public Transform attackPoint;
     private float attackVolume = 1.5f;
     private Collider[] targets;
     public GameObject Win, Lose;
 
-    [SerializeField] private int weaponDamage;
+    [SerializeField] public int weaponDamage;
 
     public int maxHealth;
     [HideInInspector] public int health;

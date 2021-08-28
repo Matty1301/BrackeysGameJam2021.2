@@ -15,12 +15,16 @@ public class RoomScript : MonoBehaviour
     [SerializeField] private int EnemyNum;
     private bool spawnedEnemies = false;
 
+    public SetWeapon setWeapon;
+
     void Start()
     {
         roomTemplate = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         roomTemplate.AddRoom(gameObject);
         Collectables = roomTemplate.Collectables;
         objectPooler = FindObjectOfType<ObjectPooler>();
+
+        setWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<SetWeapon>();
 
         openDoors();
 
@@ -105,7 +109,7 @@ public class RoomScript : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(2, 4); i++)
         {
-            Instantiate(Collectables[Random.Range(0, Collectables.Count - 1)], new Vector3(Random.Range(-11, 11) + transform.position.x, 0.5f, Random.Range(-11, 11) + transform.position.z), Quaternion.identity);
+            Instantiate(Collectables[Random.Range(0, Collectables.Count - 1)], new Vector3(Random.Range(-11, 11) + transform.position.x, transform.position.y + 0.5f, Random.Range(-11, 11) + transform.position.z), Quaternion.identity);
         }
     }
 
@@ -122,6 +126,7 @@ public class RoomScript : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && EnemyNum > 0 && doorsOpen)
         {
+            swapPlayerWeapon();
             closeDoors();
         }
         if (other.gameObject.tag == "Enemy")
@@ -158,5 +163,13 @@ public class RoomScript : MonoBehaviour
             animation.Play();
         }
         doorsOpen = true;
+    }
+
+    private void swapPlayerWeapon()
+    {
+        int RandomWeapon;
+        RandomWeapon = Random.Range(0, setWeapon.Weapons.Count);
+        Debug.Log("Weapon swapped : " + RandomWeapon.ToString());
+        setWeapon.currentWeapon = RandomWeapon;
     }
 }
