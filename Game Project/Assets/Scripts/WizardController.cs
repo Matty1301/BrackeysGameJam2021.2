@@ -16,7 +16,9 @@ public class WizardController : PlayerController
         if ((Input.GetButtonUp("AttackL") || Input.GetButtonUp("AttackR")) && !alreadyAttacked)
         {
             alreadyAttacked = true;
-            Invoke("ThrowBall", 0.3f);
+            animator.ResetTrigger("Hit");
+            animator.SetTrigger("Attack");
+            Invoke("ThrowBall", timeBeforeRegisterHits);
             Invoke("ResetAttack", timeBetweenAttacks);
         }
     }

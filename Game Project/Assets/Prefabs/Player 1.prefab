@@ -1280,6 +1280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  timeBeforeRegisterHits: 0.633
   timeBetweenAttacks: 1
   attackPoint: {fileID: 1831015686}
   Win: {fileID: 0}

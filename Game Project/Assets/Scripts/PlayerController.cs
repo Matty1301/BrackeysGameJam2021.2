@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     protected Animator animator;
     public float speed;
 
+    [SerializeField] protected float timeBeforeRegisterHits;
     [SerializeField] public float timeBetweenAttacks;
     protected bool alreadyAttacked;
     public Transform attackPoint;
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
             alreadyAttacked = true;
             animator.ResetTrigger("Hit");
             animator.SetTrigger("Attack" + (Random.Range(1, 6)));
-            Invoke("RegisterHits", 0.5f);
+            Invoke("RegisterHits", timeBeforeRegisterHits);
             Invoke("ResetAttack", timeBetweenAttacks);
         }
     }
