@@ -2,33 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherController : MonoBehaviour
+public class ArcherController : Controller
 {
     private Rigidbody rigidbody;
-    protected Animator animator;
-    [SerializeField] public float speed;
+    //protected Animator animator;
+    //[SerializeField] public float speed;
 
     private bool attackQueued = false;
     [SerializeField] private float timeBetweenAttacks;
     private bool alreadyAttacked;
-    public Transform attackPoint;
+    //public Transform attackPoint;
     private float attackVolume = 1.5f;
     private Collider[] targets;
     public Arrow ArrowPrefab;
     private Rigidbody ArrowRB;
-    public GameObject Win, Lose;
+    //public GameObject Win, Lose;
 
-    public int maxHealth;
-    [HideInInspector] public int health;
+    //public int maxHealth;
+    //[HideInInspector] public int health;
 
-    [SerializeField] GameObject ragdollPrefab;
+    //[SerializeField] GameObject ragdollPrefab;
 
     [SerializeField] Camera TopDownCamera;
 
     private Arrow currentArrow;
 
     bool shoot;
-    public float shootPower;
+    private float shootPower;
+    public float minShootPower;
     public float maxShootPower;
     public float shootPowerSpeed;
 
@@ -48,18 +49,27 @@ public class ArcherController : MonoBehaviour
             Move();
             Rotate();
 
-            if (Input.GetMouseButtonDown(0)) shoot = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                shoot = true;
+                animator.SetBool("Aiming", true);
+                animator.SetTrigger("Attack");
+            }
 
-            if(shoot && shootPower < maxShootPower)
+            if (shoot && shootPower < maxShootPower)
             {
                 shootPower += Time.deltaTime * shootPowerSpeed;
             }
 
+            if (shoot)
+                transform.Rotate(0, 90, 0);
+
             if (shoot && Input.GetMouseButtonUp(0))
             {
                 Shoot(shootPower * 5);
-                shootPower = 15;
+                shootPower = minShootPower;
                 shoot = false;
+                animator.SetBool("Aiming", false);
             }
         }
     }
@@ -96,6 +106,7 @@ public class ArcherController : MonoBehaviour
         currentArrow = Instantiate(ArrowPrefab, attackPoint);
 
         currentArrow.transform.localPosition = Vector3.zero;
+        currentArrow.gameObject.transform.rotation = transform.rotation;
         alreadyAttacked = false;
     }
 
@@ -145,7 +156,7 @@ public class ArcherController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "heals")
+        if (other.gameObject.tag == "heals" && health < maxHealth)
         {
             Heals(30);
             other.gameObject.SetActive(false);
