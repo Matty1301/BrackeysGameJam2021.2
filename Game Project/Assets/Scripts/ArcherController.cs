@@ -8,6 +8,9 @@ public class ArcherController : MonoBehaviour
     protected Animator animator;
     [SerializeField] public float speed;
 
+    public AudioSource pulling;
+    public AudioSource releasing;
+
     private bool attackQueued = false;
     [SerializeField] public float timeBetweenAttacks;
     private bool alreadyAttacked;
@@ -27,10 +30,13 @@ public class ArcherController : MonoBehaviour
 
     private Arrow currentArrow;
 
+    [SerializeField] protected AudioClip[] Pull, release, eatingMeatSounds;
+
     bool shoot;
     public float shootPower;
     public float maxShootPower;
     public float shootPowerSpeed;
+    protected AudioSource audioSource;
 
 
     private void Start()
@@ -50,13 +56,16 @@ public class ArcherController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0)) shoot = true;
 
+
             if(shoot && shootPower < maxShootPower)
             {
                 shootPower += Time.deltaTime * shootPowerSpeed;
+                PlayPullSound();
             }
 
             if (shoot && Input.GetMouseButtonUp(0))
             {
+                PlayReleaseSound();
                 Shoot(shootPower * 5);
                 shootPower = 15;
                 shoot = false;
@@ -147,8 +156,19 @@ public class ArcherController : MonoBehaviour
     {
         if (other.gameObject.tag == "heals")
         {
+            audioSource.PlayOneShot(eatingMeatSounds[Random.Range(0, eatingMeatSounds.Length)]);
             Heals(30);
             other.gameObject.SetActive(false);
         }
+    }
+
+    protected void PlayPullSound()
+    {
+        pulling.PlayOneShot(Pull[Random.Range(0, Pull.Length)], 0.45f);
+    }
+
+    protected void PlayReleaseSound()
+    {
+        releasing.PlayOneShot(release[Random.Range(0, release.Length)]);
     }
 }
