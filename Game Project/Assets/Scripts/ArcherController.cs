@@ -65,7 +65,6 @@ public class ArcherController : MonoBehaviour
 
             if (shoot && Input.GetMouseButtonUp(0))
             {
-                PlayReleaseSound();
                 Shoot(shootPower * 5);
                 shootPower = 15;
                 shoot = false;
@@ -112,7 +111,7 @@ public class ArcherController : MonoBehaviour
     {
         if (alreadyAttacked || currentArrow == null) return;
 
-
+        PlayReleaseSound();
         //currentArrow.Fly(attackPoint.TransformDirection(Vector3.forward * shootPower * Time.deltaTime));
         currentArrow.Fly(attackPoint.forward * shootPower);
         currentArrow = null;
