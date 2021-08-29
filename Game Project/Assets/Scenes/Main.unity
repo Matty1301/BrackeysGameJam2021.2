@@ -1468,6 +1468,46 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: Win
+      value: 
+      objectReference: {fileID: 518619216}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: Lose
+      value: 
+      objectReference: {fileID: 1075215681}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: TopDownCamera
+      value: 
+      objectReference: {fileID: 863163891}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: fireballAttackSounds2.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: fireballAttackSounds2.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b0c2d442ba6c1164f8cce5f73fd42fac, type: 3}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: fireballAttackSounds2.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e33d08035167fe4aa0ffe2e1dc51728, type: 3}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: fireballAttackSounds2.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 34b04034d81d37c48a73d6835a074f31, type: 3}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: fireballAttackSounds2.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 19979bc550e634a4698039662c1e5d19, type: 3}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: fireballAttackSounds2.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: a424be6131e41344bacd1f0a267d26fd, type: 3}
+    - target: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+      propertyPath: fireballAttackSounds2.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 48fd22e1fd6d21741a26e1e1138c5f27, type: 3}
     - target: {fileID: 1566248336, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -1638,7 +1678,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477145052}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37f841ac4e5af094ebb9831d422153bf, type: 3}
   m_Name: 
@@ -1653,6 +1693,7 @@ MonoBehaviour:
   ragdollPrefab: {fileID: 0}
   speed: 5
   fireballAttackSounds: []
+  fireballAttackSounds2: []
   eatingMeatSounds: []
   timeBetweenAttacks: 0.8
   attackPoint: {fileID: 925611178}
@@ -1688,10 +1729,22 @@ MonoBehaviour:
   - 0.8
   - 1
   Damage: 190000001e000000
-  Projectile: []
-  playerController: {fileID: 0}
-  fireBall: {fileID: 0}
+  Projectile:
+  - {fileID: 1067099422029325694, guid: 85b5cea1c4936c64ab17dc0f7207a11f, type: 3}
+  - {fileID: 4737831854834558832, guid: b767fa670b4d8574aa334a00f5951303, type: 3}
+  playerController: {fileID: 1477145055}
   currentWeapon: 0
+--- !u!114 &1477145055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1477145053, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
+  m_PrefabInstance: {fileID: 1477145051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477145052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f841ac4e5af094ebb9831d422153bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1477145057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8971854578004557606, guid: b629ddf3b581e0840adc0ee880c4897d, type: 3}
@@ -2110,15 +2163,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1650546745979489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6f38d9962b37a46aae1dcb7a8a2ed1, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ae7c36dd57c504b86429ad0f5e69e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapons: []
-  speed: []
-  timeBetweenAttacks: []
-  Damage: 
-  playerController: {fileID: 0}
+  Weapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed:
+  - 6
+  - 5.5
+  - 5
+  timeBetweenAttacks:
+  - 0.7
+  - 0.8
+  - 0.9
+  Damage: 190000001e00000023000000
+  Arrow:
+  - {fileID: 9058395443273451663, guid: 0ee28a385dd165c4b9ac933c39d119d8, type: 3}
+  - {fileID: 9058395443273451663, guid: 4a21a704014fbc547a03bd20bd429d7e, type: 3}
+  - {fileID: 9058395443273451663, guid: 55044df19396c654cb07950619a9855c, type: 3}
+  playerController: {fileID: 1650546745979493}
   currentWeapon: 0
+--- !u!114 &1650546745979493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8519289650140010354, guid: 321044997d1c62a48bc5c707f30a17be, type: 3}
+  m_PrefabInstance: {fileID: 2309993702611140564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650546745979489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83fa975fd0817c4ab4cb9725c47fb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4493392846139999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2306205569178439051, guid: 321044997d1c62a48bc5c707f30a17be, type: 3}

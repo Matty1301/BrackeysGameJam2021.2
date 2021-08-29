@@ -9,7 +9,7 @@ public class WizardController : Controller
     protected AudioSource audioSource;
     public float speed;
 
-    [SerializeField] protected AudioClip[] fireballAttackSounds, eatingMeatSounds;
+    [SerializeField] protected AudioClip[] fireballAttackSounds, fireballAttackSounds2, eatingMeatSounds;
 
     private bool attackQueued = false;
     [SerializeField] public float timeBetweenAttacks;
@@ -167,5 +167,6 @@ public class WizardController : Controller
     protected void PlayAttackSound()
     {
         audioSource.PlayOneShot(fireballAttackSounds[Random.Range(0, fireballAttackSounds.Length)]);
+        audioSource.PlayOneShot(fireballAttackSounds2[Random.Range(0, fireballAttackSounds2.Length)]);
     }
 }

@@ -91,8 +91,10 @@ public class PlayerController : Controller
             targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Enemy"));
             foreach (Collider target in targets)
             {
-                if (target.GetComponent<CharacterController>() != null)
-                    target.GetComponent<CharacterController>().TakeDamage(weaponDamage);
+                if (target.GetComponent<EnemyAI>() != null)
+                {
+                    target.GetComponent<EnemyAI>().TakeDamage(weaponDamage);
+                }
             }
         }
     }
