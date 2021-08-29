@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetWeapon : MonoBehaviour
+public class SetWeaponMelee : MonoBehaviour
 {
     public List<GameObject> Weapons;
     public List<float> speed;

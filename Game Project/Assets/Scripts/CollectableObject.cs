@@ -51,9 +51,7 @@ public class CollectableObject : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
-        if (playerController.GetComponent<SetWeapon>())
-            playerController.speed = playerController.GetComponent<SetWeapon>().speed[playerController.currentWeapon];
-        else playerController.speed = initialSpeed;
+        playerController.speed /= 2;
 
         gameObject.SetActive(false);
     }

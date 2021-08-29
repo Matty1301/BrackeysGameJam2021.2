@@ -9,7 +9,7 @@ public class ArcherController : Controller
     //[SerializeField] public float speed;
 
     private bool attackQueued = false;
-    [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] public float timeBetweenAttacks;
     private bool alreadyAttacked;
     //public Transform attackPoint;
     private float attackVolume = 1.5f;

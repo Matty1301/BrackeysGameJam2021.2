@@ -35,7 +35,7 @@ public class PlayerController : Controller
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
         health = maxHealth;
-        currentWeapon = GetComponent<SetWeapon>().currentWeapon;
+        currentWeapon = GetComponent<SetWeaponMelee>().currentWeapon;
     }
 
     protected void Update()
@@ -91,8 +91,10 @@ public class PlayerController : Controller
             targets = Physics.OverlapSphere(attackPoint.position, attackVolume, 1 << LayerMask.NameToLayer("Enemy"));
             foreach (Collider target in targets)
             {
-                if (target.GetComponent<CharacterController>() != null)
-                    target.GetComponent<CharacterController>().TakeDamage(weaponDamage);
+                if (target.GetComponent<EnemyAI>() != null)
+                {
+                    target.GetComponent<EnemyAI>().TakeDamage(weaponDamage);
+                }
             }
         }
     }
@@ -107,7 +109,7 @@ public class PlayerController : Controller
         }
     }
 
-    /*
+    
     public void TakeDamage(int damage)
     {
         animator.SetTrigger("Hit");
@@ -127,7 +129,7 @@ public class PlayerController : Controller
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }
-    */
+    
 
     protected void Heals(int healthA)
     {
