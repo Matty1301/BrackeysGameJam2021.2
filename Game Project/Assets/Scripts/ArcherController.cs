@@ -2,36 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherController : Controller
+public class ArcherController : MonoBehaviour
 {
     private Rigidbody rigidbody;
-    //protected Animator animator;
-    //[SerializeField] public float speed;
+    protected Animator animator;
+    [SerializeField] public float speed;
+
+    public AudioSource pulling;
+    public AudioSource releasing;
 
     private bool attackQueued = false;
     [SerializeField] public float timeBetweenAttacks;
     private bool alreadyAttacked;
-    //public Transform attackPoint;
+    public Transform attackPoint;
     private float attackVolume = 1.5f;
     private Collider[] targets;
     public Arrow ArrowPrefab;
     private Rigidbody ArrowRB;
-    //public GameObject Win, Lose;
+    public GameObject Win, Lose;
 
-    //public int maxHealth;
-    //[HideInInspector] public int health;
+    public int maxHealth;
+    [HideInInspector] public int health;
 
-    //[SerializeField] GameObject ragdollPrefab;
+    [SerializeField] GameObject ragdollPrefab;
 
     [SerializeField] Camera TopDownCamera;
 
     private Arrow currentArrow;
 
+    [SerializeField] protected AudioClip[] Pull, release, eatingMeatSounds;
+
     bool shoot;
-    private float shootPower;
-    public float minShootPower;
+    public float shootPower;
     public float maxShootPower;
     public float shootPowerSpeed;
+    protected AudioSource audioSource;
 
 
     private void Start()
@@ -49,27 +54,20 @@ public class ArcherController : Controller
             Move();
             Rotate();
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                shoot = true;
-                animator.SetBool("Aiming", true);
-                animator.SetTrigger("Attack");
-            }
+            if (Input.GetMouseButtonDown(0)) shoot = true;
 
-            if (shoot && shootPower < maxShootPower)
+
+            if(shoot && shootPower < maxShootPower)
             {
                 shootPower += Time.deltaTime * shootPowerSpeed;
+                PlayPullSound();
             }
-
-            if (shoot)
-                transform.Rotate(0, 90, 0);
 
             if (shoot && Input.GetMouseButtonUp(0))
             {
                 Shoot(shootPower * 5);
-                shootPower = minShootPower;
+                shootPower = 15;
                 shoot = false;
-                animator.SetBool("Aiming", false);
             }
         }
     }
@@ -106,7 +104,6 @@ public class ArcherController : Controller
         currentArrow = Instantiate(ArrowPrefab, attackPoint);
 
         currentArrow.transform.localPosition = Vector3.zero;
-        currentArrow.gameObject.transform.rotation = transform.rotation;
         alreadyAttacked = false;
     }
 
@@ -114,7 +111,7 @@ public class ArcherController : Controller
     {
         if (alreadyAttacked || currentArrow == null) return;
 
-
+        PlayReleaseSound();
         //currentArrow.Fly(attackPoint.TransformDirection(Vector3.forward * shootPower * Time.deltaTime));
         currentArrow.Fly(attackPoint.forward * shootPower);
         currentArrow = null;
@@ -156,10 +153,21 @@ public class ArcherController : Controller
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "heals" && health < maxHealth)
+        if (other.gameObject.tag == "heals")
         {
+            audioSource.PlayOneShot(eatingMeatSounds[Random.Range(0, eatingMeatSounds.Length)]);
             Heals(30);
             other.gameObject.SetActive(false);
         }
+    }
+
+    protected void PlayPullSound()
+    {
+        pulling.PlayOneShot(Pull[Random.Range(0, Pull.Length)], 0.45f);
+    }
+
+    protected void PlayReleaseSound()
+    {
+        releasing.PlayOneShot(release[Random.Range(0, release.Length)]);
     }
 }
