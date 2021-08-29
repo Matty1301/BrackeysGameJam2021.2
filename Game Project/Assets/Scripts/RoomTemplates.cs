@@ -23,9 +23,13 @@ public class RoomTemplates : MonoBehaviour
 
     public List<GameObject> Collectables;
 
+    public List<GameObject> Characters;
+
     private void Awake()
     {
         objectPooler = FindObjectOfType<ObjectPooler>();
+
+        Characters[PublicVariables.character].SetActive(true);
     }
 
     private void Update()
