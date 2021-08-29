@@ -15,7 +15,10 @@ public class RoomScript : MonoBehaviour
     [SerializeField] private int EnemyNum;
     private bool spawnedEnemies = false;
 
-    public SetWeapon setWeapon;
+    public SetWeaponMelee setWeaponMelee;
+    public SetWeaponWizard setWeaponWizard;
+    public SetWeaponArcher setWeaponArcher;
+
 
     void Start()
     {
@@ -24,7 +27,20 @@ public class RoomScript : MonoBehaviour
         Collectables = roomTemplate.Collectables;
         objectPooler = FindObjectOfType<ObjectPooler>();
 
-        setWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<SetWeapon>();
+        if (PublicVariables.character == 0)
+        {
+            setWeaponMelee = GameObject.FindGameObjectWithTag("Player").GetComponent<SetWeaponMelee>();
+        }
+
+        if (PublicVariables.character == 1)
+        {
+            setWeaponWizard = GameObject.FindGameObjectWithTag("Player").GetComponent<SetWeaponWizard>();
+        }
+
+        if (PublicVariables.character == 2)
+        {
+            setWeaponArcher = GameObject.FindGameObjectWithTag("Player").GetComponent<SetWeaponArcher>();
+        }
 
         openDoors();
 
@@ -170,11 +186,34 @@ public class RoomScript : MonoBehaviour
 
     private void swapPlayerWeapon()
     {
-        if (setWeapon != null)
+        if (PublicVariables.character == 0)
         {
-            int RandomWeapon = Random.Range(0, setWeapon.Weapons.Count);
-            Debug.Log("Weapon swapped : " + RandomWeapon);
-            setWeapon.ChangeWeapon(RandomWeapon);
+            if (setWeaponMelee != null)
+            {
+                int RandomWeapon = Random.Range(0, setWeaponMelee.Weapons.Count);
+                Debug.Log("Weapon swapped : " + RandomWeapon);
+                setWeaponMelee.ChangeWeapon(RandomWeapon);
+            }
+        }
+
+        if (PublicVariables.character == 1)
+        {
+            if (setWeaponWizard != null)
+            {
+                int RandomWeapon = Random.Range(0, setWeaponWizard.Weapons.Count);
+                Debug.Log("Weapon swapped : " + RandomWeapon);
+                setWeaponWizard.ChangeWeapon(RandomWeapon);
+            }
+        }
+
+        if (PublicVariables.character == 2)
+        {
+            if (setWeaponArcher != null)
+            {
+                int RandomWeapon = Random.Range(0, setWeaponArcher.Weapons.Count);
+                Debug.Log("Weapon swapped : " + RandomWeapon);
+                setWeaponArcher.ChangeWeapon(RandomWeapon);
+            }
         }
     }
 }

@@ -7,26 +7,26 @@ public class WizardController : Controller
     private Rigidbody rigidbody;
     //protected Animator animator;
     protected AudioSource audioSource;
-    //public float speed;
+    public float speed;
 
     [SerializeField] protected AudioClip[] fireballAttackSounds, eatingMeatSounds;
 
     private bool attackQueued = false;
-    [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] public float timeBetweenAttacks;
     private bool alreadyAttacked;
-    //public Transform attackPoint;
+    public Transform attackPoint;
     private float attackVolume = 1.5f;
     private Collider[] targets;
     public GameObject PrefabFireBall;
     private Rigidbody FireBallRB;
-    //public GameObject Win, Lose;
+    public GameObject Win, Lose;
 
     [SerializeField] private int weaponDamage;
 
-    //public int maxHealth;
-    //[HideInInspector] public int health;
+    public int maxHealth;
+    [HideInInspector] public int health;
 
-    //[SerializeField] GameObject ragdollPrefab;
+   [SerializeField] GameObject ragdollPrefab;
 
     [SerializeField] Camera TopDownCamera;
     public float AttackSpread;
@@ -126,7 +126,7 @@ public class WizardController : Controller
         }
     }
 
-    /*
+    
     public void TakeDamage(int damage)
     {
         animator.SetTrigger("Hit");
@@ -146,7 +146,6 @@ public class WizardController : Controller
         gameObject.SetActive(false);
         GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);
     }
-    */
 
     private void Heals(int healthA)
     {
