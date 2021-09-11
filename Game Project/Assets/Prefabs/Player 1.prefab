@@ -1283,8 +1283,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   currentWeapon: 0
+  attackPoint: {fileID: 1831015686}
+  Win: {fileID: 0}
+  Lose: {fileID: 0}
   maxHealth: 300
   health: 0
+  ragdollPrefab: {fileID: 2159344188836501235, guid: 78543a4ffd40af74bb8cbb1b7c35909b, type: 3}
   swordAttackSounds:
   - {fileID: 8300000, guid: cf91c6ccf43e5da4282f79079592e47a, type: 3}
   - {fileID: 8300000, guid: d6111d9d031c6de4e9a32c04f9a79d2f, type: 3}
@@ -1351,11 +1355,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7a7b4353457b65043a4abf29234fd5c5, type: 3}
   timeBeforeRegisterHits: 0.633
   timeBetweenAttacks: 1
-  attackPoint: {fileID: 1831015686}
-  Win: {fileID: 0}
-  Lose: {fileID: 0}
   weaponDamage: 25
-  ragdollPrefab: {fileID: 2159344188836501235, guid: 78543a4ffd40af74bb8cbb1b7c35909b, type: 3}
 --- !u!114 &470692117
 MonoBehaviour:
   m_ObjectHideFlags: 0

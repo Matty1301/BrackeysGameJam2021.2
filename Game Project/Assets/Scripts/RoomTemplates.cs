@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoomTemplates : MonoBehaviour
 {
+    public static UnityEngine.Events.UnityAction playerSpawned;
+
     public GameObject[] bottomRooms;
     public GameObject[] topRooms;
     public GameObject[] rightRooms;
@@ -30,6 +32,7 @@ public class RoomTemplates : MonoBehaviour
         objectPooler = FindObjectOfType<ObjectPooler>();
 
         Characters[PublicVariables.character].SetActive(true);
+        playerSpawned?.Invoke();
     }
 
     private void Update()

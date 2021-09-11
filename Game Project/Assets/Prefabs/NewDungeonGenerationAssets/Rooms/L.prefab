@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: -4760402175900563408}
   - component: {fileID: -1173775925790001254}
   - component: {fileID: 8154089079973926478}
-  - component: {fileID: -6967024651916570632}
   m_Layer: 0
   m_Name: L
   m_TagString: Untagged
@@ -100,7 +99,9 @@ MonoBehaviour:
   doorsOpen: 0
   Collectables: []
   EnemyNum: 0
-  setWeapon: {fileID: 0}
+  setWeaponMelee: {fileID: 0}
+  setWeaponWizard: {fileID: 0}
+  setWeaponArcher: {fileID: 0}
 --- !u!65 &8154089079973926478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,19 +115,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 8, z: 20}
   m_Center: {x: 0, y: 4, z: 0}
---- !u!65 &-6967024651916570632
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3311848102891876635}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1239310748962210565
 PrefabInstance:
   m_ObjectHideFlags: 0

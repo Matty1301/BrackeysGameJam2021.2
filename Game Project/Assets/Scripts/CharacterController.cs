@@ -34,7 +34,7 @@ public class CharacterController : MonoBehaviour
     protected void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = FindObjectOfType<Controller>().transform;
         agent = GetComponent<NavMeshAgent>();
         audioSource = GameObject.Find("SoundEffectsSource").GetComponent<AudioSource>();
         startPos = transform.position;

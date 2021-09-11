@@ -21,8 +21,8 @@ public class CollectableObject : MonoBehaviour
     private void Start()
     {
         audioSource = GameObject.Find("SoundEffectsSource").GetComponent<AudioSource>();
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>();
-        initialSpeed = playerController.speed;
+        playerController = FindObjectOfType<Controller>();
+        //initialSpeed = playerController.speed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,15 +40,15 @@ public class CollectableObject : MonoBehaviour
                 speedBoost = false;
                 PlayPickupSound();
                 playerController.speed = playerController.speed * 2;
-                StartCoroutine(resetSpeed(SpeedValue));
+                MushroomMeshRenderer.enabled = false;
+                //StartCoroutine(resetSpeed(SpeedValue));
+                gameObject.SetActive(false);
             }
         }
     }
 
     private IEnumerator resetSpeed(float delay)
     {
-        MushroomMeshRenderer.enabled = false;
-
         yield return new WaitForSeconds(delay);
 
         playerController.speed /= 2;

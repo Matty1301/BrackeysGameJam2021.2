@@ -9,7 +9,12 @@ public class PlayerHealthBar : MonoBehaviour
     private Controller playerController;
     private Slider healthBarFill;
 
-    private void Awake()
+    private void OnEnable()
+    {
+        RoomTemplates.playerSpawned += Initialize;
+    }
+
+    private void Initialize()
     {
         playerController = FindObjectOfType<Controller>();
         rectTransform = GetComponent<RectTransform>();
@@ -24,5 +29,10 @@ public class PlayerHealthBar : MonoBehaviour
         {
             healthBarFill.value = (float)playerController.health / playerController.maxHealth;
         }
+    }
+
+    private void OnDisable()
+    {
+        RoomTemplates.playerSpawned -= Initialize;
     }
 }
