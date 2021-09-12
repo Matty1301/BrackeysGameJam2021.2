@@ -54,7 +54,7 @@ public class ArcherController : Controller
             Move();
             Rotate();
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !shoot)
             {
                 shoot = true;
                 animator.SetBool("Aiming", true);
@@ -63,7 +63,7 @@ public class ArcherController : Controller
                 //currentArrow.transform.localPosition = Vector3.zero;
             }
 
-            if(shoot && shootPower < maxShootPower)
+            if(Input.GetMouseButton(0) && shootPower < maxShootPower)
             {
                 shootPower += Time.deltaTime * shootPowerSpeed;
                 PlayPullSound();
@@ -72,14 +72,17 @@ public class ArcherController : Controller
             if (shoot && Input.GetMouseButtonUp(0))
             {
                 animator.SetBool("Aiming", false);
-                shoot = false;
             }
         }
     }
 
     private void Move()
     {
-        rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rigidbody.velocity.y, Input.GetAxisRaw("Vertical") * speed);
+        if (shoot == true)
+            rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
+        else
+            rigidbody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * speed, rigidbody.velocity.y, Input.GetAxisRaw("Vertical") * speed);
+
         Vector3 xzvelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
         animator.SetFloat("Speed", xzvelocity.sqrMagnitude);
     }
@@ -94,6 +97,11 @@ public class ArcherController : Controller
         }
         else
             transform.LookAt(transform.position + rigidbody.velocity);
+
+        if (shoot == true)
+        {
+            transform.Rotate(0, 90, 0);
+        }
     }
 
     private void reload()
@@ -118,8 +126,8 @@ public class ArcherController : Controller
         currentArrow.Fly(attackPoint.forward * shootPower * 5);
         currentArrow = null;
 
+        shoot = false;
         shootPower = 15;
-
         reload();
     }
 
