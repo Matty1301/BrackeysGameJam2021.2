@@ -5,15 +5,26 @@ using UnityEngine;
 public class Selection : MonoBehaviour
 {
     public GameObject[] characters;
+    private Animator[] animators;
 
-    public void PreviousCharacter()
+    private void Start()
+    {
+        animators = new Animator[characters.Length];
+
+        for (int i = 0; i < characters.Length; i++)
+        {
+            animators[i] = characters[i].GetComponent<Animator>();
+        }
+    }
+
+    public void NextCharacter()
     {
         characters[PublicVariables.character].SetActive(false);
         PublicVariables.character = (PublicVariables.character + 1) % characters.Length;
         characters[PublicVariables.character].SetActive(true);
     }
 
-    public void NextCharacter()
+    public void PreviousCharacter()
     {
         characters[PublicVariables.character].SetActive(false);
         PublicVariables.character--;
