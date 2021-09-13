@@ -37,7 +37,7 @@ public class SetWeaponArcher : MonoBehaviour
 
         playerController.speed = speed[currentWeapon];
         playerController.timeBetweenAttacks = timeBetweenAttacks[currentWeapon];
-        playerController.ArrowPrefab = Arrow[currentWeapon];
+        playerController.ArrowPrefab = Arrow[currentWeapon].gameObject;
         Arrow[currentWeapon].GetComponent<Arrow>().damage = Damage[currentWeapon];
 
         for (int i = 0; i < Weapons.Count; i++)

@@ -138,7 +138,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8889985523723988059}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0012, y: 0.0005, z: 0.0005}
@@ -150,6 +150,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4703529039634509191}
     m_Modifications:
+    - target: {fileID: 7443616922417293568, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
+      propertyPath: ShapeModule.m_Position.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443616922417293568, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443616922417293568, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
+      propertyPath: ShapeModule.alignToDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443616922417293568, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443616922417293568, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
+      propertyPath: ShapeModule.sphericalDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443616922417293568, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
+      propertyPath: VelocityModule.z.maxCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443616922417293568, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
+      propertyPath: VelocityModule.z.maxCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7443616922436456638, guid: 8abc5831dcc14f245b66ffd4b7cec050, type: 3}
       propertyPath: m_Name
       value: FX_Trap_FlameHead_Fire

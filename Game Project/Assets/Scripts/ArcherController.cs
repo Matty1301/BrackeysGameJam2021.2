@@ -17,7 +17,7 @@ public class ArcherController : Controller
     //public Transform attackPoint;
     private float attackVolume = 1.5f;
     private Collider[] targets;
-    public Arrow ArrowPrefab;
+    public GameObject ArrowPrefab;
     private Rigidbody ArrowRB;
     //public GameObject Win, Lose;
 
@@ -33,7 +33,8 @@ public class ArcherController : Controller
     [SerializeField] protected AudioClip[] Pull, release, eatingMeatSounds;
 
     bool shoot;
-    public float shootPower;
+    private float shootPower;
+    public float minShootPower;
     public float maxShootPower;
     public float shootPowerSpeed;
     protected AudioSource audioSource;
@@ -44,10 +45,11 @@ public class ArcherController : Controller
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         health = maxHealth;
-        reload();
+        //reload();
+        shootPower = minShootPower;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Time.timeScale != 0)
         {
@@ -59,14 +61,14 @@ public class ArcherController : Controller
                 shoot = true;
                 animator.SetBool("Aiming", true);
                 animator.SetTrigger("Attack");
-                currentArrow = Instantiate(ArrowPrefab, attackPoint);
+                PlayPullSound();
+                currentArrow = Instantiate(ArrowPrefab, attackPoint).GetComponent<Arrow>();
                 //currentArrow.transform.localPosition = Vector3.zero;
             }
 
             if(Input.GetMouseButton(0) && shootPower < maxShootPower)
             {
                 shootPower += Time.deltaTime * shootPowerSpeed;
-                PlayPullSound();
             }
 
             if (shoot && Input.GetMouseButtonUp(0))
@@ -89,19 +91,21 @@ public class ArcherController : Controller
 
     private void Rotate()
     {
-        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        if (rigidbody.velocity.x == 0 && rigidbody.velocity.z == 0)
         {
             Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
                 Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
-            transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
+            if (hitInfo.collider != null)
+            {
+                transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
+                if (shoot == true)
+                {
+                    transform.Rotate(0, 90, 0);
+                }
+            }
         }
         else
             transform.LookAt(transform.position + rigidbody.velocity);
-
-        if (shoot == true)
-        {
-            transform.Rotate(0, 90, 0);
-        }
     }
 
     private void reload()
@@ -123,11 +127,11 @@ public class ArcherController : Controller
 
         PlayReleaseSound();
         //currentArrow.Fly(attackPoint.TransformDirection(Vector3.forward * shootPower * 5 * Time.deltaTime));
-        currentArrow.Fly(attackPoint.forward * shootPower * 5);
+        currentArrow.Fly(attackPoint.forward * shootPower);
         currentArrow = null;
 
         shoot = false;
-        shootPower = 15;
+        shootPower = minShootPower;
         reload();
     }
 

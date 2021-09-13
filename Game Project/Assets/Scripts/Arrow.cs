@@ -18,8 +18,9 @@ public class Arrow : MonoBehaviour
         transform.SetParent(null);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) return;
         if (DidHit) return;
         DidHit = true;
 

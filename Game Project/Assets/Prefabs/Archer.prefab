@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783094394}
-  m_LocalRotation: {x: 0.5498868, y: 0.000000015803117, z: -0.000000010404117, w: 0.8352392}
+  m_LocalRotation: {x: 0.48476854, y: 0.000000015140937, z: -0.000000008391829, w: 0.8746425}
   m_LocalPosition: {x: 0, y: 12, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1964767931}
   m_Father: {fileID: 2306205569178439051}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 55, y: 0, z: 0}
 --- !u!114 &783094396
 MonoBehaviour:
@@ -10710,7 +10710,7 @@ Transform:
   - {fileID: 2305973165393682599}
   - {fileID: 2314633943400525113}
   m_Father: {fileID: 2306205569178439051}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2308244116598419739
 GameObject:
@@ -48549,7 +48549,6 @@ Transform:
   m_LocalPosition: {x: -0.9999995, y: 0.033784866, z: -6.964056}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2309993704071127917}
   - {fileID: 2314789873628820421}
   - {fileID: 2305896932708878239}
   - {fileID: 783094397}
@@ -48588,16 +48587,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  pulling: {fileID: 0}
-  releasing: {fileID: 0}
-  timeBetweenAttacks: 1
+  currentWeapon: 0
   attackPoint: {fileID: 2309993704071127917}
-  ArrowPrefab: {fileID: 9058395443273451663, guid: 0ee28a385dd165c4b9ac933c39d119d8, type: 3}
   Win: {fileID: 0}
   Lose: {fileID: 0}
   maxHealth: 250
   health: 0
   ragdollPrefab: {fileID: 0}
+  pulling: {fileID: 0}
+  releasing: {fileID: 0}
+  timeBetweenAttacks: 1
+  ArrowPrefab: {fileID: 9058395443273451663, guid: 0ee28a385dd165c4b9ac933c39d119d8, type: 3}
   TopDownCamera: {fileID: 0}
   Pull: []
   release: []
@@ -57908,7 +57908,7 @@ Transform:
   m_Children:
   - {fileID: 2305882111470582541}
   m_Father: {fileID: 2306205569178439051}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2309184452776161209
 GameObject:
@@ -67951,12 +67951,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2309993704071127916}
-  m_LocalRotation: {x: 0.05685737, y: 0.7295366, z: -0.0064329887, w: -0.6815441}
-  m_LocalPosition: {x: -0.7043981, y: 1.4027885, z: 0.008248444}
-  m_LocalScale: {x: 0.5000001, y: 0.50000006, z: 0.50000006}
+  m_LocalRotation: {x: -0.000000026077023, y: -0.00000014901156, z: -0.00000008940694, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.06756981}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2306205569178439051}
-  m_RootOrder: 0
+  m_Father: {fileID: 4715443718149325809}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &151084964
 Rigidbody:
