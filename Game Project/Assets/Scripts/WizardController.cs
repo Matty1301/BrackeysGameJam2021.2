@@ -78,7 +78,7 @@ public class WizardController : Controller
             Invoke("PlayAttackSound", 0.1f);
             animator.ResetTrigger("Hit");
             animator.SetTrigger("Attack");
-            Invoke("ThrowBall", 0.3f);
+            Invoke("ThrowBall", 0.4f);
             Invoke("ResetAttack", timeBetweenAttacks);
         }
 
@@ -111,8 +111,9 @@ public class WizardController : Controller
         FireBallRB.AddForce(directionWithSpread.normalized * AttackForce, ForceMode.Impulse);
     */
         
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
-        Instantiate(PrefabFireBall, attackPoint.transform.position, Quaternion.identity).transform.LookAt(new Vector3(hitInfo.point.x, attackPoint.transform.position.y, hitInfo.point.z));
+        //Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
+        //Instantiate(PrefabFireBall, attackPoint.transform.position, Quaternion.identity).transform.LookAt(new Vector3(hitInfo.point.x, attackPoint.transform.position.y, hitInfo.point.z));
+        Instantiate(PrefabFireBall, attackPoint.transform.position, Quaternion.identity).transform.rotation = transform.rotation;
 
     }
 

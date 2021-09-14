@@ -32,5 +32,12 @@ public class FireBall : MonoBehaviour
         {
             other.GetComponent<BossAI>().TakeDamage(damage);
         }
+
+        else if (other.gameObject.tag == "Wall")
+        {
+            GetComponent<ParticleSystem>().Stop();
+            GetComponent<Collider>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 }

@@ -16,11 +16,11 @@ public class Arrow : MonoBehaviour
         rb.AddForce(force, ForceMode.Impulse);
         rb.AddTorque(transform.right * torque);
         transform.SetParent(null);
+        GetComponent<Collider>().enabled = true;
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) return;
         if (DidHit) return;
         DidHit = true;
 
@@ -38,5 +38,8 @@ public class Arrow : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;
         transform.SetParent(other.transform);
+        GetComponent<Collider>().enabled = false;
+        if (GetComponentInChildren<ParticleSystem>() != null)
+            GetComponentInChildren<ParticleSystem>().Stop();
     }
 }

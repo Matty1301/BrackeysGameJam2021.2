@@ -38108,7 +38108,7 @@ GameObject:
   - component: {fileID: 2570122412362949648}
   - component: {fileID: 4487747704358837430}
   - component: {fileID: 6882165345798153412}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Wizard Ragdoll
   m_TagString: Player
   m_Icon: {fileID: 0}

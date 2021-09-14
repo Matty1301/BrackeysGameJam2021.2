@@ -44,6 +44,7 @@ public class ArcherController : Controller
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
         health = maxHealth;
         //reload();
         shootPower = minShootPower;
@@ -55,26 +56,29 @@ public class ArcherController : Controller
         {
             Move();
             Rotate();
+        }
+    }
 
-            if (Input.GetMouseButtonDown(0) && !shoot)
-            {
-                shoot = true;
-                animator.SetBool("Aiming", true);
-                animator.SetTrigger("Attack");
-                PlayPullSound();
-                currentArrow = Instantiate(ArrowPrefab, attackPoint).GetComponent<Arrow>();
-                //currentArrow.transform.localPosition = Vector3.zero;
-            }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && !shoot)
+        {
+            shoot = true;
+            animator.SetBool("Aiming", true);
+            animator.SetTrigger("Attack");
+            PlayPullSound();
+            currentArrow = Instantiate(ArrowPrefab, attackPoint).GetComponent<Arrow>();
+            //currentArrow.transform.localPosition = Vector3.zero;
+        }
 
-            if(Input.GetMouseButton(0) && shootPower < maxShootPower)
-            {
-                shootPower += Time.deltaTime * shootPowerSpeed;
-            }
+        if (Input.GetMouseButton(0) && shootPower < maxShootPower)
+        {
+            shootPower += Time.deltaTime * shootPowerSpeed;
+        }
 
-            if (shoot && Input.GetMouseButtonUp(0))
-            {
-                animator.SetBool("Aiming", false);
-            }
+        if (shoot && Input.GetMouseButtonUp(0))
+        {
+            animator.SetBool("Aiming", false);
         }
     }
 
@@ -91,6 +95,7 @@ public class ArcherController : Controller
 
     private void Rotate()
     {
+        rigidbody.angularVelocity = Vector3.zero;
         if (rigidbody.velocity.x == 0 && rigidbody.velocity.z == 0)
         {
             Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
@@ -100,7 +105,7 @@ public class ArcherController : Controller
                 transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
                 if (shoot == true)
                 {
-                    transform.Rotate(0, 90, 0);
+                    transform.Rotate(0, 90 - 9.804f, 0);
                 }
             }
         }

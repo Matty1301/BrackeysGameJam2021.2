@@ -1559,9 +1559,9 @@ GameObject:
   - component: {fileID: 2720029360355886524}
   - component: {fileID: 987075399303483303}
   - component: {fileID: 2720029360355570731}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Warchief Ragdoll
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

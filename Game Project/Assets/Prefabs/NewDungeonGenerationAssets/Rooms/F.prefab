@@ -66,7 +66,9 @@ MonoBehaviour:
   doorsOpen: 0
   Collectables: []
   EnemyNum: 0
-  setWeapon: {fileID: 0}
+  setWeaponMelee: {fileID: 0}
+  setWeaponWizard: {fileID: 0}
+  setWeaponArcher: {fileID: 0}
 --- !u!65 &-2213701361629130243
 BoxCollider:
   m_ObjectHideFlags: 0

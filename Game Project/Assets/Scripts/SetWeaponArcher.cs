@@ -33,23 +33,13 @@ public class SetWeaponArcher : MonoBehaviour
 
     public void ChangeWeapon(int WeaponIndex)
     {
+        Weapons[currentWeapon].SetActive(false);
         setWeaponIndex(WeaponIndex);
+        Weapons[currentWeapon].SetActive(true);
 
         playerController.speed = speed[currentWeapon];
         playerController.timeBetweenAttacks = timeBetweenAttacks[currentWeapon];
         playerController.ArrowPrefab = Arrow[currentWeapon].gameObject;
         Arrow[currentWeapon].GetComponent<Arrow>().damage = Damage[currentWeapon];
-
-        for (int i = 0; i < Weapons.Count; i++)
-        {
-            if (WeaponIndex != i)
-            {
-                Weapons[i].SetActive(false);
-            }
-            else
-            {
-                Weapons[i].SetActive(true);
-            }
-        }
     }
 }

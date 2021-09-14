@@ -1501,7 +1501,7 @@ GameObject:
   - component: {fileID: 8060189083492833729}
   - component: {fileID: 8060189083493062775}
   - component: {fileID: 8060189083493062772}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Goblin1 Ragdoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}

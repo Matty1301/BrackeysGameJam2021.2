@@ -102,6 +102,9 @@ MonoBehaviour:
   doorsOpen: 0
   Collectables: []
   EnemyNum: 0
+  setWeaponMelee: {fileID: 0}
+  setWeaponWizard: {fileID: 0}
+  setWeaponArcher: {fileID: 0}
 --- !u!114 &837217703
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23956,7 +23956,7 @@ GameObject:
   - component: {fileID: 3349302138025469704}
   - component: {fileID: 1044703285365496032}
   - component: {fileID: 3346516551890265911}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ArcherRagdoll
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -1182,7 +1182,7 @@ GameObject:
   - component: {fileID: 2538651332340636514}
   - component: {fileID: 2538651332340436716}
   - component: {fileID: 2538651332340436719}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Golem Ragdoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}

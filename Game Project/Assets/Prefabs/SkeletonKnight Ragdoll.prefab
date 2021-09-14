@@ -5216,7 +5216,7 @@ GameObject:
   - component: {fileID: 6258805194427766573}
   - component: {fileID: 6258805194427716037}
   - component: {fileID: 6258805194427716036}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SkeletonKnight Ragdoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
