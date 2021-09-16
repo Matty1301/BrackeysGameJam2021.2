@@ -103,7 +103,9 @@ public class CharacterController : MonoBehaviour
             Death();
         }
         else
+        {
             ChasePlayer();
+        }
     }
 
     protected virtual void Death()

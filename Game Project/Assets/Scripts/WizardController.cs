@@ -110,11 +110,10 @@ public class WizardController : Controller
         FireBallRB = currentBall.GetComponent<Rigidbody>();
         FireBallRB.AddForce(directionWithSpread.normalized * AttackForce, ForceMode.Impulse);
     */
-        
+
         //Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, Mathf.Infinity, 1 << LayerMask.NameToLayer("Walkable"));
         //Instantiate(PrefabFireBall, attackPoint.transform.position, Quaternion.identity).transform.LookAt(new Vector3(hitInfo.point.x, attackPoint.transform.position.y, hitInfo.point.z));
-        Instantiate(PrefabFireBall, attackPoint.transform.position, Quaternion.identity).transform.rotation = transform.rotation;
-
+        Instantiate(PrefabFireBall, transform.position, transform.rotation);
     }
 
     protected void ResetAttack()

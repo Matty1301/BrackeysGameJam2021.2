@@ -236,7 +236,7 @@ MonoBehaviour:
   attackPoint: {fileID: 7540281814289600918}
   attackVolume: 2
   weaponDamage: 15
-  sightRange: 6
+  sightRange: 10
   attackRange: 3
   playerIsInSightRange: 0
   playerIsInAttackRange: 0

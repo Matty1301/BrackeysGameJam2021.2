@@ -28,7 +28,7 @@ TagManager:
   - TempCast
   - Walkable
   - Wall
-  - Arrow
+  - Projectile
   - Ragdoll
   - 
   - 

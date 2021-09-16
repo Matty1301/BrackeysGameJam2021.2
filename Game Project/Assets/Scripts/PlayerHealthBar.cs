@@ -18,16 +18,17 @@ public class PlayerHealthBar : MonoBehaviour
     {
         playerController = FindObjectOfType<Controller>();
         rectTransform = GetComponent<RectTransform>();
-        rectTransform.sizeDelta = new Vector2(playerController.maxHealth, 20);
+        rectTransform.localScale = new Vector3((float)playerController.maxHealth / 300, 1, 1);
         healthBarFill = GetComponent<Slider>();
-        healthBarFill.value = 1;
+        healthBarFill.maxValue = playerController.maxHealth;
+        healthBarFill.value = healthBarFill.maxValue;
     }
 
     void Update()
     {
         if (playerController != null)
         {
-            healthBarFill.value = (float)playerController.health / playerController.maxHealth;
+            healthBarFill.value = playerController.health;
         }
     }
 

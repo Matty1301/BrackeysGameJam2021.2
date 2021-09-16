@@ -17,6 +17,11 @@ public class Selection : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        PublicVariables.character = 0;
+    }
+
     public void NextCharacter()
     {
         characters[PublicVariables.character].SetActive(false);

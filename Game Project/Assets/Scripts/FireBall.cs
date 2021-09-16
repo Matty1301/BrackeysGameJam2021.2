@@ -21,7 +21,7 @@ public class FireBall : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.tag == "Enemy")
         {
